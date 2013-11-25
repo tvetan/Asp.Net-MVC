@@ -1,0 +1,76 @@
+﻿@using AspNetMvcExam.Web.Models;
+
+@model AspNetMvcExam.Models.Ticket
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h1>Ticketing System</h1>
+<h2>Details</h2>
+
+<h2> @Model.Title</h2>
+<h3>Category: @Model.Category.Name</h3>
+
+<div class="row">
+    <div class="span4">
+       
+		    Author: @Model.Author.UserName
+        <br />
+        
+        <b> Priority:</b> @Model.Priority
+    </div>
+    @if (Model.Url != null)
+    {
+        <div class="span4">
+            <img width="100" height="100" src="~/@Model.Url" alt="img for ticket" />
+        </div>
+    }
+    
+    @if (Model.Url != null)
+    {
+        <div class="span4">
+            <b> Discription: </b>@Model.Description
+        </div>
+    }
+    
+</div>
+<div id="comments">
+    @foreach (var comment in Model.Comments)
+{
+        @*<p>
+            <b> @comment.User.UserName </b>: @comment.Content
+        </p>*@
+        
+       @Html.Partial("_CommentPartial", new CommentViewModel() { Content = comment.Content, UserName = comment.User.UserName})
+}
+</div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    @Ajax.BeginForm("PostComment", new AjaxOptions() { 
+
+        InsertionMode = InsertionMode.InsertAfter,
+        UpdateTargetId = "comments",
+        HttpMethod = "Post" 
+    })
+    {
+       @Html.Hidden("TicketId", Model.Id) <br />
+        @Html.TextArea("Content")<br />
+
+        <input type="submit" value="Submit comment" />    
+    }
+}
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+@section scripts{
+
+    <script>
+        function commentPostFailure() {
+            alert("Error");
+        }
+    </script>
+}

@@ -1,0 +1,28 @@
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Models\bin\Debug\AspNetMvcExam.Models.dll.config
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Models\bin\Debug\AspNetMvcExam.Models.dll
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Models\bin\Debug\AspNetMvcExam.Models.pdb
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Models\bin\Debug\EntityFramework.dll
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Models\bin\Debug\EntityFramework.SqlServer.dll
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Models\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Models\bin\Debug\EntityFramework.xml
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Models\bin\Debug\EntityFramework.SqlServer.xml
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Models\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Models\obj\Debug\AspNetMvcExam.Models.dll
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Models\obj\Debug\AspNetMvcExam.Models.pdb
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Models\obj\Debug\AspNetMvcExam.Models.csprojResolveAssemblyReference.cache
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Models\obj\Debug\AspNetMvcExam.Models.csprojResolveAssemblyReference.cache
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Models\obj\Debug\AspNetMvcExam.Models.dll
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Models\obj\Debug\AspNetMvcExam.Models.pdb
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Models\bin\Debug\AspNetMvcExam.Models.dll.config
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Models\bin\Debug\AspNetMvcExam.Models.dll
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Models\bin\Debug\AspNetMvcExam.Models.pdb
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Models\bin\Debug\EntityFramework.dll
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Models\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Models\bin\Debug\EntityFramework.xml
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Models\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml

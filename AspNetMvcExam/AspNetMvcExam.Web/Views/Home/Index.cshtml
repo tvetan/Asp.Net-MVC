@@ -1,0 +1,17 @@
+﻿@model IEnumerable<AspNetMvcExam.Models.Ticket>
+@{
+    ViewBag.Title = "Home Page";
+}
+<h1>Ticketing System</h1>
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <div class="span3">
+            <h1>    @item.Title </h1>
+            <b>Category:</b> @item.Category.Name<br />
+            <p><b> Author: </b>@item.Author.UserName</p>   
+            <p>  @item.Comments.Count comments(s)</p>
+            <p>  <a href="~/Home/Details/@item.Id" class="btn">More details...</a></p>
+        </div>
+    }
+</div>

@@ -1,0 +1,32 @@
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\AspNetMvcExam.Data.dll.config
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\AspNetMvcExam.Data.dll
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\AspNetMvcExam.Data.pdb
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\AspNetMvcExam.Models.dll
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\EntityFramework.dll
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\AspNetMvcExam.Models.pdb
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\EntityFramework.xml
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Data\obj\Debug\AspNetMvcExam.Data.csprojResolveAssemblyReference.cache
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Data\obj\Debug\AspNetMvcExam.Data.dll
+D:\Dropbox\Telerik - Denis\Telerik Homeworks\ASP.NET MVC\AspNetMvcExam\AspNetMvcExam.Data\obj\Debug\AspNetMvcExam.Data.pdb
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\AspNetMvcExam.Data.dll.config
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\AspNetMvcExam.Data.dll
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\AspNetMvcExam.Data.pdb
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\AspNetMvcExam.Models.dll
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\EntityFramework.dll
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\AspNetMvcExam.Models.pdb
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\EntityFramework.xml
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Data\obj\Debug\AspNetMvcExam.Data.csprojResolveAssemblyReference.cache
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Data\obj\Debug\AspNetMvcExam.Data.dll
+C:\Users\1\Desktop\AspNetMvcExam\AspNetMvcExam\AspNetMvcExam.Data\obj\Debug\AspNetMvcExam.Data.pdb

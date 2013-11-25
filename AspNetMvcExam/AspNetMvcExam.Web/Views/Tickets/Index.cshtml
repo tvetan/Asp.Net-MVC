@@ -1,0 +1,176 @@
+﻿@model IEnumerable<AspNetMvcExam.Web.Models.TicketsListViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+
+<div class="row-fluid">
+    @using (Html.BeginForm("Search", "Tickets", FormMethod.Get))
+    {     
+        <div>
+            Search by category
+        </div>
+        @(Html.Kendo()
+        .DropDownList()
+        .Name("category")
+        .DataTextField("CategoryName")
+        .DataValueField("Id")
+        .OptionLabel("Select Category")
+        .DataSource(data =>
+        {
+            data.Read(read => read.Action("GetCateogryData", "Tickets"));
+            data.ServerFiltering(true);
+        }))
+        <br />
+
+    <input type="submit" value="Search" class="btn" />
+
+    }
+</div>
+<br />
+@*Title Category Author Priority*@
+<div class="row-fluid">
+    <div class="span3">
+        <b> Title</b>
+        <br />
+
+    </div>
+    <div class="span3">
+        <b>   Category</b>
+    </div>
+    <div class="span3">
+        <b>   Author</b>
+    </div>
+
+    <div class="span3">
+        <b>   Priority</b>
+    </div>
+</div>
+@(Html.Kendo()
+    .ListView<AspNetMvcExam.Web.Models.TicketsListViewModel>()
+    .Name("tickets")
+    .TagName("div")
+    .ClientTemplateId("laptop-template")
+    .Pageable()
+    .DataSource(data =>
+    {
+        data.Read("GetTickets", "Tickets");
+        data.ServerOperation(true);
+        data.PageSize(5);
+    }))
+
+<script id="laptop-template" type="text/x-kendo-template">
+    <div class="row-fluid">
+        <div class="span3">
+            #: Title #
+            <br />
+            <a href="Home/Details/#:Id#" class="btn"> Details</a>
+        </div>
+        <div class="span3">
+            <h3>#: CategoryName # </h3>
+        </div>
+        <div class="span3">
+            #: Author #
+        </div>
+
+        <div class="span3">
+            # if( Priority.toString() == "0") {    #
+                Low
+            #} else if(Priority.toString() == 1) {#
+                Medium
+           
+            #} else if(Priority.toString() == 2) {#
+                High
+            #}#
+        </div>
+    </div>
+</script>
+
+<script>
+    function onAdditionalData() {
+        return {
+            text: $('#modelsearch').val()
+        };
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Author.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Url)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Priority)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Url)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Priority)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>*@
