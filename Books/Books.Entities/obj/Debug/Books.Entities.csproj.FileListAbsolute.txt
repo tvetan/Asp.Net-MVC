@@ -1,0 +1,5 @@
+C:\Users\1\documents\visual studio 2013\Projects\Books\Books.Entities\bin\Debug\Books.Entities.dll
+C:\Users\1\documents\visual studio 2013\Projects\Books\Books.Entities\bin\Debug\Books.Entities.pdb
+C:\Users\1\documents\visual studio 2013\Projects\Books\Books.Entities\obj\Debug\Books.Entities.csprojResolveAssemblyReference.cache
+C:\Users\1\documents\visual studio 2013\Projects\Books\Books.Entities\obj\Debug\Books.Entities.dll
+C:\Users\1\documents\visual studio 2013\Projects\Books\Books.Entities\obj\Debug\Books.Entities.pdb

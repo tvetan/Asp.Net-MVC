@@ -1,0 +1,8 @@
+﻿@using Books.Entities;
+@using Books.Web.Helpers;
+
+@{
+    string selectedItem = typeof(Genre).GetSelectedName((int?)Model);
+}
+
+@selectedItem
