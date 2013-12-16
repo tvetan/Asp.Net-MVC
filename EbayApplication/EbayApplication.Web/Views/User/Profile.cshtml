@@ -1,0 +1,25 @@
+﻿@model EbayApplication.Web.Models.UserModels.UserViewModel
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+<h2>Profile for @Html.DisplayFor(model => model.FirstName)</h2>
+
+<fieldset>
+    <legend>UserViewModel</legend>
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+    </dl>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

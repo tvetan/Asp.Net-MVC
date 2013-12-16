@@ -1,0 +1,32 @@
+﻿@model EbayApplication.Models.Question
+
+<div class="well" id="@Model.Id">
+    <p> @Model.Content</p>
+    @if (Model.User != null)
+    {
+       <p> Asked by
+            <a href="#">
+                @Html.ActionLink(Model.User.UserName, "Profile", "User", new { username = Model.User.UserName }, null)
+            </a>
+       </p>                            
+    }  
+
+    <div class="answers bar-info">
+        @if (User.Identity.Name == Model.Product.Owner.UserName)
+        {
+            <a href="#" class="add-answer">Add answer</a>
+        }
+        
+        @if (Model.Answers.Count != 0)
+        {
+            <h3>Answers</h3> 
+        }
+            
+        @foreach (var item in Model.Answers)
+        {
+            @Html.Partial("_Answer", item)
+        }
+    </div>    
+</div>
+
+
