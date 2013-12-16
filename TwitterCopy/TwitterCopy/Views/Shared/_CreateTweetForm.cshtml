@@ -1,0 +1,10 @@
+﻿@model TwitterCopy.Models.CreateTweetViewModel
+
+@using (Html.BeginForm("Create","tweet", FormMethod.Post))
+{
+    @*<div class="row">*@
+        @Html.TextAreaFor(model => model.Status, new { id = "tweetTextArea" })
+    @*</div>*@
+    
+        <input type="submit" value="Tweet" />
+}

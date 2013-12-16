@@ -1,0 +1,10 @@
+﻿@model IEnumerable<TwitterCopy.Models.Tweet>
+
+<div class="content-header">
+    <h2>Tweets</h2>
+</div>
+
+@foreach (var tweet in Model)
+{
+    @Html.Partial("_TweetsListItem", tweet)
+}

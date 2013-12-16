@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNet.Identity;
+@using TwitterCopy.Models;
+@model IEnumerable<ApplicationUser>
+
+<h1>@ViewBag.result</h1>
+
+@section RandomUsers {
+    @Html.Partial("_RandomUsersPartial")
+}
+
+@section ListItems {
+    <div>
+        <h3>
+            Results for
+            <b>
+                @ViewBag.searchQuery
+            </b>
+        </h3>
+    </div>
+    @Html.Partial("_usersListPartial", Model)
+}

@@ -1,0 +1,45 @@
+﻿@using Microsoft.AspNet.Identity
+@using TwitterCopy.Models;
+
+@model TwitterCopy.Models.ApplicationUser
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@section  MiniProfile {
+   @Html.Partial("_AccountSummary")
+    <div class="row">
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="@Url.Action("index", User.Identity.GetUserName())">
+                    <strong> @Model.Tweets.Count</strong>
+                    Tweets
+                </a>
+            </li>
+            <li>
+                <a href="@Url.RouteUrl("Followings")">
+                    @Model.Followings.Count
+                    Followings
+                </a>
+            </li>
+            <li>
+                <a href="@Url.RouteUrl("Followers")">
+                    @Model.Followers.Count
+                    Followers
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="row">
+        @Html.Partial("_CreateTweetForm", new CreateTweetViewModel())
+    </div>
+}
+
+@section RandomUsers {
+    @Html.Partial("_RandomUsersPartial")
+}
+
+@section ListItems { 
+    @Html.Action("listTweets", "tweet")
+}

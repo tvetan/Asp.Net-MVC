@@ -1,0 +1,22 @@
+﻿@model IEnumerable<TwitterCopy.Models.ApplicationUser>
+
+@foreach (var user in Model)
+{
+    <div class="content">
+        <a href="#" class="account-summary">
+            <span class="profile">
+                <b>
+                    @user.UserName
+                </b>
+                <small class="username metadata">
+                    @@@user.UserName
+                </small>
+            </span>
+
+        </a>
+        <small class="metadata">Followed by</small>
+        <div class="follow-button">
+            @Html.RouteLink("Follow", "Follow", new { id = user.Id }, new { @class = "btn" })
+        </div>
+    </div>
+}

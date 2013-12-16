@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNet.Identity;
+@model TwitterCopy.Models.ApplicationUser
+
+<div class="module profile-card">
+    <div class="profile-header">
+        <div class="profile-card-inner">
+            <h1 class="fullname">
+                @Model.UserName
+            </h1>
+            <h2 class="username">
+                @@@Model.UserName
+            </h2>
+        </div>
+    </div>
+
+    <div class="profile-card-footer">
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="@Url.Action("index", User.Identity.GetUserName())">
+                    <strong> @Model.Tweets.Count</strong>
+                    Tweets
+                </a>
+            </li>
+            <li>
+                <a href="@Url.RouteUrl("Followings")">
+                    @Model.Followings.Count
+                    Followings
+                </a>
+            </li>
+            <li>
+                <a href="@Url.RouteUrl("Followers")">
+                    @Model.Followers.Count
+                    Followers
+                </a>
+            </li>
+        </ul>
+        <a class="btn edit-profile-btn js-nav inline-edit-profile-btn" href="/settings/profile" data-scribe-element="profile_edit_button">Edit profile</a>
+    </div>
+</div>

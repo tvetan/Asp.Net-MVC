@@ -1,0 +1,56 @@
+﻿@using Microsoft.AspNet.Identity
+@using TwitterCopy.Models;
+
+@{
+   @* ViewBag.Title = "Home Page";*@
+    Layout = "_Layout.cshtml";
+}
+
+<div class="row">
+    
+    <div class="col-md-4">
+        <div class="module">
+            @RenderSection("NavLinks", false)
+        </div>
+
+        <div class="module">
+            @RenderSection("MiniProfile", false)
+        </div>
+
+        <div class="module">
+            @RenderSection("TweetToUser", false)
+        </div>
+
+        <div class="module">
+            @RenderSection("RandomUsers", false)
+        </div>
+    </div>
+
+    <div class="col-md-7">
+         
+            @RenderSection("ProfileHeader", false)
+         
+        <div class="module row">
+            @RenderSection("ListItems", false)
+        </div>
+    </div>
+</div>
+@RenderBody()
+@section Scripts{
+    @RenderSection("Scripts", false)
+    <script>
+        $(function () {
+            $("#myModal").draggable({ handle: ".modal-header" });
+        })
+    </script>
+
+    <script>
+        $(function () {
+            $(".follow-btn").hover(function (event) {
+                var $this = $(this);
+                $this.find(".follow-text").toggle();
+                $this.find(".unfollow-text").toggle();
+            })
+        });
+    </script>
+}

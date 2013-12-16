@@ -1,0 +1,22 @@
+﻿@using TwitterCopy.Common.Extensions;
+
+@model TwitterCopy.Models.Tweet
+
+<div class="content list-item tweet">
+
+        <a href="@Url.Action("index", "user", new { username = Model.Author.UserName })" class="account-summary-small profile-link">
+            <strong class="fullname-tweet">
+                @Model.Author.UserName
+            </strong>
+            <small class="metadata">
+                @@@Model.Author.UserName
+            </small>
+
+
+        </a>
+        <b class="time">
+            @Model.FormatTimeSinceCreated()
+        </b>
+
+        <p>@Model.Status</p>
+</div>

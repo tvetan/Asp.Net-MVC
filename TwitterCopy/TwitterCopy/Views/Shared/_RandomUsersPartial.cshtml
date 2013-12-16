@@ -1,0 +1,12 @@
+﻿<div class="row">
+    <div class="row module-header">
+        <h3>Who to follow</h3>
+        <small>. </small>
+        @Ajax.ActionLink("Refresh", "RandomUsers", "user", new AjaxOptions() { })
+        <small>. </small>
+        @Html.ActionLink("View all", "All", "user")
+    </div>
+    <div class="random-followers">
+        @Html.Action("RandomUsers", "user")
+    </div>
+</div>

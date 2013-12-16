@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<JustCodeSettings Version="0.0" Timestamp="6ed9dcf3-7ba9-4725-9677-82cb097386f6">
+  <IgnoredErrorsAndWarningsSettings xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <IgnoredErrorsAndWarnings Version="2">
+      <FilePath>
+        <FileRelativePath>TwitterCopy/Content/bootstrap.css</FileRelativePath>
+        <ProjectRelativePath>TwitterCopy/TwitterCopy.Web.csproj</ProjectRelativePath>
+        <IgnoredElement>
+          <TextualIdentifier>8955920619622301386</TextualIdentifier>
+        </IgnoredElement>
+      </FilePath>
+      <FilePath>
+        <FileRelativePath>TwitterCopy/Content/bootstrap.min.css</FileRelativePath>
+        <ProjectRelativePath>TwitterCopy/TwitterCopy.Web.csproj</ProjectRelativePath>
+        <IgnoredElement>
+          <TextualIdentifier>15255017624466104006</TextualIdentifier>
+        </IgnoredElement>
+        <IgnoredElement>
+          <TextualIdentifier>8138236739951471567</TextualIdentifier>
+        </IgnoredElement>
+      </FilePath>
+      <FilePath>
+        <FileRelativePath>TwitterCopy/Controllers/UserController.cs</FileRelativePath>
+        <ProjectRelativePath>TwitterCopy/TwitterCopy.Web.csproj</ProjectRelativePath>
+        <IgnoredElement>
+          <TextualIdentifier>8586455654719132707</TextualIdentifier>
+        </IgnoredElement>
+      </FilePath>
+    </IgnoredErrorsAndWarnings>
+  </IgnoredErrorsAndWarningsSettings>
+</JustCodeSettings>

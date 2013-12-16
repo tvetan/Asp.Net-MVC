@@ -1,0 +1,5 @@
+﻿@using (Html.BeginForm("search", "home", FormMethod.Get, new { @class = "navbar-left form-search" }))
+{
+    @Html.TextBox("search", null, new { @class = "input-medium search-query" })
+    <input type="submit" value="search" class="btn" />
+}

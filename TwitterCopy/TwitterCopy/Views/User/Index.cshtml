@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNet.Identity;
+@using TwitterCopy.Models;
+
+@model TwitterCopy.Models.ApplicationUser
+@{
+    string title = User.Identity.Name + " (" + User.Identity.Name +") on Twitter Copy";
+    ViewBag.Title = title;
+}
+
+@section NavLinks{
+    <ul class="nav nav-pills nav-stacked">
+        <li class="active">          
+            <a href="">Tweets</a>
+        </li>
+        <li>
+            @Html.ActionLink("Following","Followings","home")
+        </li>
+        <li>
+            @Html.ActionLink("Followers", "Followers", "home")
+        </li>
+    </ul>
+}
+
+@if (User.Identity.GetUserId() != Model.Id)
+{
+    @section TweetToUser{
+        <p>Tweet to @Model.UserName</p>
+       @Html.Partial("_CreateTweetForm", new CreateTweetViewModel())
+    }   
+}
+
+
+
+@section RandomUsers {
+    @Html.Partial("_RandomUsersPartial")
+}
+
+@section ProfileHeader{
+    @Html.Partial("_ProfileHeaderPartial", Model)
+}
+
+@section ListItems{
+    @Html.Action("listTweets", "tweet")
+}
+
+@section Scripts{
+    <script>
+        $(function () {
+            $(".active").on("click", function (event) {
+                event.preventDefault();
+            });
+    
+           $("#tweetTextArea").val("@@" + "@Model.UserName ");
+           // $('#tweetTextArea').append(@Model.UserName); 
+        });
+    </script>  
+}

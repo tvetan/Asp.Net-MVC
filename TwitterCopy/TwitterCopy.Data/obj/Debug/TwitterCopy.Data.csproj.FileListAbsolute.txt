@@ -1,0 +1,16 @@
+C:\Users\1\documents\visual studio 2013\Projects\TwitterCopy\TwitterCopy.Data\obj\Debug\TwitterCopy.Data.csprojResolveAssemblyReference.cache
+C:\Users\1\documents\visual studio 2013\Projects\TwitterCopy\TwitterCopy.Data\bin\Debug\TwitterCopy.Data.dll.config
+C:\Users\1\documents\visual studio 2013\Projects\TwitterCopy\TwitterCopy.Data\bin\Debug\TwitterCopy.Data.dll
+C:\Users\1\documents\visual studio 2013\Projects\TwitterCopy\TwitterCopy.Data\bin\Debug\TwitterCopy.Data.pdb
+C:\Users\1\documents\visual studio 2013\Projects\TwitterCopy\TwitterCopy.Data\bin\Debug\EntityFramework.dll
+C:\Users\1\documents\visual studio 2013\Projects\TwitterCopy\TwitterCopy.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\1\documents\visual studio 2013\Projects\TwitterCopy\TwitterCopy.Data\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\1\documents\visual studio 2013\Projects\TwitterCopy\TwitterCopy.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\1\documents\visual studio 2013\Projects\TwitterCopy\TwitterCopy.Data\bin\Debug\TwitterCopy.Models.dll
+C:\Users\1\documents\visual studio 2013\Projects\TwitterCopy\TwitterCopy.Data\bin\Debug\TwitterCopy.Models.pdb
+C:\Users\1\documents\visual studio 2013\Projects\TwitterCopy\TwitterCopy.Data\bin\Debug\EntityFramework.xml
+C:\Users\1\documents\visual studio 2013\Projects\TwitterCopy\TwitterCopy.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\1\documents\visual studio 2013\Projects\TwitterCopy\TwitterCopy.Data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\1\documents\visual studio 2013\Projects\TwitterCopy\TwitterCopy.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\1\documents\visual studio 2013\Projects\TwitterCopy\TwitterCopy.Data\obj\Debug\TwitterCopy.Data.dll
+C:\Users\1\documents\visual studio 2013\Projects\TwitterCopy\TwitterCopy.Data\obj\Debug\TwitterCopy.Data.pdb
