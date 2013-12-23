@@ -9,7 +9,7 @@ using System.Diagnostics;
 
 namespace TwitterCopy.Data
 {
-    public class TwitterCopyDbContext : IdentityDbContext<ApplicationUser>
+    public class TwitterCopyDbContext : IdentityDbContext<ApplicationUser>, ITwitterCopyDbContext
     {
         public TwitterCopyDbContext()
             : this("DefaultConnection")
@@ -33,7 +33,7 @@ namespace TwitterCopy.Data
             }
         }
 
-        public new IDbSet<T> Set<T>() where T : class
+        public IDbSet<T> Set<T>() where T : class
         {
             return base.Set<T>();
         }
@@ -76,7 +76,7 @@ namespace TwitterCopy.Data
             return base.SaveChanges();
         }
 
-        private void ApplyAuditInfoRules()
+        public void ApplyAuditInfoRules()
         {
             // Approach via @julielerman: http://bit.ly/123661P
             foreach (var entry in
@@ -98,7 +98,6 @@ namespace TwitterCopy.Data
                 }
             }
         }
-
         //public System.Data.Entity.DbSet<TwitterCopy.Models.SettingsViewModel> SettingsViewModels { get; set; }
     }
 }
