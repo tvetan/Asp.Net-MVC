@@ -5,6 +5,5 @@ namespace TwitterCopy.Models
 {
     public class Country : Selectable
     {
-        
     }
 }

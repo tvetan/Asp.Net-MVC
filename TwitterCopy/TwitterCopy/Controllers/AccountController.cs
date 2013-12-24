@@ -14,6 +14,7 @@ using TwitterCopy.Web.Common;
 using TwitterCopy.Controllers.Base;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace TwitterCopy.Controllers
 {
@@ -32,7 +33,6 @@ namespace TwitterCopy.Controllers
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
-
         public ActionResult Settings()
         {
             var user = this.GetLogInUser();
@@ -45,10 +45,37 @@ namespace TwitterCopy.Controllers
             {
                 Email = user.Email,
                 UserName = user.UserName,
-                Id = user.Id
+                Id = user.Id,
+                LanguageId = user.LanguageId,
+                Language = user.Language,
+                CountryId = user.CountryId,
+                Country = user.Country,
+                TimeZoneId = user.TimeZoneId,
+                TimeZone = user.TimeZone
             };
 
+            var countries = this.Data.Countries.All();
+            settingsViewModel.Countries = countries;
+
+            var languages = this.Data.Languages.All();
+            settingsViewModel.Languages = languages;
+
+            var timeZones = this.Data.TimeZones.All();
+            settingsViewModel.TimeZones = timeZones;
+
             return View(settingsViewModel);
+        }
+
+        private IList<SelectListItem> CreateSelectList(IEnumerable<Selectable> selectableList)
+        {
+            IList<SelectListItem> items = new List<SelectListItem>();
+
+            foreach (var selectable in selectableList)
+            {
+                items.Add(new SelectListItem { Text = selectable.Name, Value = selectable.Code });
+            }
+
+            return items;
         }
 
         [HttpPost]
@@ -62,6 +89,12 @@ namespace TwitterCopy.Controllers
 
                 logInUser.Email = user.Email;
                 logInUser.UserName = user.UserName;
+                logInUser.LanguageId = user.LanguageId;
+                logInUser.Language = user.Language;
+                logInUser.CountryId = user.CountryId;
+                logInUser.Country = user.Country;
+                logInUser.TimeZoneId = user.TimeZoneId;
+                logInUser.TimeZone = user.TimeZone;
 
                 this.Data.Users.Update(logInUser);
                 this.Data.SaveChanges();

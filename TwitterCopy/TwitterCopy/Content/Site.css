@@ -300,3 +300,20 @@ h1, h2, h3, h4, h5, h6 {
     border-color: #a93730;
     border-bottom-color: #952f2a;
 }
+
+select {
+    width: 220px;
+    border: 1px solid #cccccc;
+    background-color: #ffffff;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+select, input[type="file"] {
+    height: 30px;
+    line-height: 30px;
+}
+
+.form-group .col-md-10{
+    text-align: left;
+}

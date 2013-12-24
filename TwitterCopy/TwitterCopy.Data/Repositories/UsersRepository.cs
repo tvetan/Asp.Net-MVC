@@ -53,6 +53,7 @@ namespace TwitterCopy.Data.Repositories
             {
                 query = this.DbSet.Include(u => u.Followings);
             }
+
             return query;
         }  
     }

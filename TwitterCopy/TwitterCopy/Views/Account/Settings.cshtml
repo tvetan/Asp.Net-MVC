@@ -38,6 +38,31 @@
                 </div>
 
                 <div class="form-group">
+                    @Html.Label("Time Zone", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(x => x.TimeZoneId,
+                        new SelectList(Model.TimeZones, "Code", "Name", Model.TimeZone),
+                        "Select TimeZone")
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Country", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(x => x.CountryId,
+                 new SelectList(Model.Countries, "Code", "Name", Model.Country), "Select Country")
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Language", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(x => x.LanguageId,
+                        new SelectList(Model.Languages, "Code", "Name", Model.Language), "Select Language")
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Save" class="btn btn-default" />
                     </div>

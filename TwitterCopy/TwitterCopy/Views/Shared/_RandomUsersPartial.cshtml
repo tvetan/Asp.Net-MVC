@@ -2,11 +2,16 @@
     <div class="row module-header">
         <h3>Who to follow</h3>
         <small>. </small>
-        @Ajax.ActionLink("Refresh", "RandomUsers", "user", new AjaxOptions() { })
+        @Ajax.ActionLink("Refresh", "RandomUsers", "user",
+            new AjaxOptions()
+            {
+                UpdateTargetId = "random-followers",
+                InsertionMode = InsertionMode.Replace,
+            })
         <small>. </small>
-        @Html.ActionLink("View all", "All", "user")
+        @Html.RouteLink("View all", "WhoToFollowRoute")
     </div>
-    <div class="random-followers">
+    <div class="random-followers" id="random-followers">
         @Html.Action("RandomUsers", "user")
     </div>
 </div>

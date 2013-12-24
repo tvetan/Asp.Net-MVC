@@ -21,6 +21,7 @@ namespace TwitterCopy.Controllers.Base
         protected ApplicationUser GetLogInUser()
         {
             string userId = User.Identity.GetUserId();
+
             var user = this.Data.Users.GetById(userId, true, true, true, true);
 
             return user;

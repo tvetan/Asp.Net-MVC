@@ -14,3 +14,19 @@ C:\Users\1\documents\visual studio 2013\Projects\TwitterCopy\TwitterCopy.Data\bi
 C:\Users\1\documents\visual studio 2013\Projects\TwitterCopy\TwitterCopy.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\1\documents\visual studio 2013\Projects\TwitterCopy\TwitterCopy.Data\obj\Debug\TwitterCopy.Data.dll
 C:\Users\1\documents\visual studio 2013\Projects\TwitterCopy\TwitterCopy.Data\obj\Debug\TwitterCopy.Data.pdb
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Data\bin\Debug\TwitterCopy.Data.dll.config
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Data\bin\Debug\TwitterCopy.Data.dll
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Data\bin\Debug\TwitterCopy.Data.pdb
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Data\bin\Debug\EntityFramework.dll
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Data\bin\Debug\EntityFramework.SqlServer.dll
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Data\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Data\bin\Debug\TwitterCopy.Models.dll
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Data\bin\Debug\TwitterCopy.Models.pdb
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Data\bin\Debug\EntityFramework.xml
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Data\bin\Debug\EntityFramework.SqlServer.xml
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Data\obj\Debug\TwitterCopy.Data.csprojResolveAssemblyReference.cache
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Data\obj\Debug\TwitterCopy.Data.dll
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Data\obj\Debug\TwitterCopy.Data.pdb

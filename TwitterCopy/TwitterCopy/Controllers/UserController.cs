@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using TwitterCopy.Controllers.Base;
@@ -11,8 +12,9 @@ namespace TwitterCopy.Controllers
     {
         private const string FollowersHeader = "Followers";
         private const string FollowingHeader = "Followings";
-        public UserController(ITwitterCopyData data)
-            : base(data)
+        private readonly Random random = new Random();
+
+        public UserController(ITwitterCopyData data) : base(data)
         {
         }
 
@@ -44,16 +46,40 @@ namespace TwitterCopy.Controllers
             return user;
         }
 
-        [ChildActionOnly]
         public ActionResult RandomUsers()
         {
             var logInUser = this.GetLogInUser();
-            var users = this.Data.Users.All()
-                .Where(user => user.Id != logInUser.Id)
-                // .Where(user => !user.Followers.Contains(logInUser))
-                .Take(3);
+            var followingsIds = logInUser.Followings.Select(user => user.Id);
 
-            return PartialView("_ListRandomUsers", users.ToList());
+            var filteredUsers = this.Data.Users.All()
+                            .Where(user => user.Id != logInUser.Id && !followingsIds.Contains(user.Id));
+
+            IEnumerable<ApplicationUser> randomUsers = this.GetRandomUsers(filteredUsers.ToList());
+
+            return PartialView("_ListRandomUsers", randomUsers);
+        }
+
+        private IEnumerable<ApplicationUser> GetRandomUsers(IList<ApplicationUser> users)
+        {
+            if (users.Count() <= 3)
+            {
+                return users;
+            }
+
+            IList<ApplicationUser> randomUsers = new List<ApplicationUser>();
+            for (int i = 0; i < 3; i++)
+            {
+                int randomNumber = this.random.Next(users.Count());
+                randomUsers.Add(users.ElementAt(randomNumber));
+                users.RemoveAt(randomNumber);
+            }
+
+            return randomUsers;
+        }
+
+        public ActionResult Suggestions()
+        {
+            return View();
         }
 
         [ChildActionOnly]

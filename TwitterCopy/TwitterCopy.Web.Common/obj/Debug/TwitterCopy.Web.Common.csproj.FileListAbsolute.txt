@@ -5,3 +5,10 @@ C:\Users\1\documents\visual studio 2013\Projects\TwitterCopy\TwitterCopy.Web.Com
 C:\Users\1\documents\visual studio 2013\Projects\TwitterCopy\TwitterCopy.Web.Common\obj\Debug\TwitterCopy.Web.Common.csprojResolveAssemblyReference.cache
 C:\Users\1\documents\visual studio 2013\Projects\TwitterCopy\TwitterCopy.Web.Common\obj\Debug\TwitterCopy.Web.Common.dll
 C:\Users\1\documents\visual studio 2013\Projects\TwitterCopy\TwitterCopy.Web.Common\obj\Debug\TwitterCopy.Web.Common.pdb
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Web.Common\bin\Debug\TwitterCopy.Web.Common.dll
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Web.Common\bin\Debug\TwitterCopy.Web.Common.pdb
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Web.Common\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Web.Common\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Web.Common\obj\Debug\TwitterCopy.Web.Common.csprojResolveAssemblyReference.cache
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Web.Common\obj\Debug\TwitterCopy.Web.Common.dll
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Web.Common\obj\Debug\TwitterCopy.Web.Common.pdb

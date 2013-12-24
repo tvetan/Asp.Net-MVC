@@ -27,6 +27,7 @@ namespace TwitterCopy.Controllers
         public ActionResult Follow(string id)
         {
             var currentUser = this.GetLogInUser();
+
             var followingUser = this.Data.Users.GetById(id);
 
             currentUser.Followings.Add(followingUser);

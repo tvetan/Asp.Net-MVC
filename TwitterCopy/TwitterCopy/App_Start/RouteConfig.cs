@@ -90,6 +90,12 @@ namespace TwitterCopy
                );
 
             routes.MapRoute(
+               name: "WhoToFollowRoute",
+               url: "who_to_follow/suggestions",
+               defaults: new { controller = "User", action = "suggestions" }
+               );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

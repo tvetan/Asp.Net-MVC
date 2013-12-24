@@ -11,19 +11,23 @@ namespace TwitterCopy.Data
 {
     public class TwitterCopyDbContext : IdentityDbContext<ApplicationUser>, ITwitterCopyDbContext
     {
-        public TwitterCopyDbContext()
-            : this("DefaultConnection")
+        public TwitterCopyDbContext() : this("TwitterCopyConnection")
         {
         }
 
-        public TwitterCopyDbContext(string nameOrConnectionString)
-            : base(nameOrConnectionString)
+        public TwitterCopyDbContext(string nameOrConnectionString) : base(nameOrConnectionString)
         {
         }
 
         public IDbSet<UserProfile> UserProfiles { get; set; }
 
         public IDbSet<Tweet> Tweets { get; set; }
+
+        public IDbSet<Language> Languages { get; set; }
+
+        public IDbSet<TwitterCopy.Models.TimeZone> TimeZones { get; set; }
+
+        public IDbSet<Country> Countries { get; set; }
 
         public DbContext DbContext
         {
@@ -41,14 +45,14 @@ namespace TwitterCopy.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ApplicationUser>()
-                .HasMany(u => u.Followers)
-                .WithMany(u => u.Followings)
-                .Map(map =>
-                {
-                    map.MapLeftKey("FollowingId");
-                    map.MapRightKey("FollowerId");
-                    map.ToTable("Follow");
-                });
+                        .HasMany(u => u.Followers)
+                        .WithMany(u => u.Followings)
+                        .Map(map =>
+                        {
+                            map.MapLeftKey("FollowingId");
+                            map.MapRightKey("FollowerId");
+                            map.ToTable("Follow");
+                        });
 
             modelBuilder.Entity<ApplicationUser>().HasMany(u => u.Tweets);
 
@@ -57,7 +61,7 @@ namespace TwitterCopy.Data
 
         public override int SaveChanges()
         {
-           // this.ApplyAuditInfoRules();
+            // this.ApplyAuditInfoRules();
             try
             {
                 return base.SaveChanges();
@@ -82,9 +86,9 @@ namespace TwitterCopy.Data
             foreach (var entry in
                 this.ChangeTracker.Entries()
                     .Where(
-                        e =>
-                        e.Entity is IAuditInfo && ((e.State == EntityState.Added)
-                        || (e.State == EntityState.Modified))))
+                         e =>
+                             e.Entity is IAuditInfo && ((e.State == EntityState.Added) ||
+                                                        (e.State == EntityState.Modified))))
             {
                 var entity = (IAuditInfo)entry.Entity;
 

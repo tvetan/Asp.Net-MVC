@@ -1,21 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using Microsoft.AspNet.Identity.EntityFramework;
-using TwitterCopy.Models.Contracts;
-
-namespace TwitterCopy.Models
+﻿namespace TwitterCopy.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Linq;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using TwitterCopy.Models.Contracts;
+    using System.ComponentModel;
+
     public class ApplicationUser : IdentityUser, IAuditInfo
     {
+        private ICollection<Tweet> tweets;
+
+        private ICollection<ApplicationUser> followers;
+
+        private ICollection<ApplicationUser> followings;
+
         public ApplicationUser()
         {
             this.tweets = new HashSet<Tweet>();
             this.followers = new HashSet<ApplicationUser>();
             this.followings = new HashSet<ApplicationUser>();
         }
+
         public string Email { get; set; }
 
         public string City { get; set; }
@@ -28,47 +36,57 @@ namespace TwitterCopy.Models
 
         public virtual UserProfile UserProfile { get; set; }
 
-        private ICollection<Tweet> tweets;
-
         public virtual ICollection<Tweet> Tweets
         {
             get
             {
-                return tweets;
+                return this.tweets;
             }
+
             set
             {
-                tweets = value;
+                this.tweets = value;
             }
         }
-
-        private ICollection<ApplicationUser> followings;
 
         public virtual ICollection<ApplicationUser> Followings
         {
             get
             {
-                return followings;
+                return this.followings;
             }
+
             set
             {
                 this.followings = value;
             }
         }
 
-        private ICollection<ApplicationUser> followers;
-
         public virtual ICollection<ApplicationUser> Followers
         {
             get
             {
-                return followers;
+                return this.followers;
             }
+
             set
             {
-                followers = value;
+                this.followers = value;
             }
         }
+
+        public int? CountryId { get; set; }
+
+        public virtual Country Country { get; set; }
+
+        public int? LanguageId { get; set; }
+
+        public virtual Language Language { get; set; }
+
+        //[DefaultValue(1)]
+        public int? TimeZoneId { get; set; }
+
+        public virtual TimeZone TimeZone { get; set; }
 
         #region IAuditInfo
         [DataType(DataType.DateTime)]

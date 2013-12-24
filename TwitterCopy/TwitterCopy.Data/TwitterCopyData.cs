@@ -25,6 +25,32 @@ namespace TwitterCopy.Data
             this.context = context;
         }
 
+
+        public IRepository<Language> Languages
+        {
+            get
+            {
+                return this.GetRepository<Language>();
+            }
+        }
+
+        public IRepository<TwitterCopy.Models.TimeZone> TimeZones
+        {
+            get
+            {
+                
+                return this.GetRepository<TwitterCopy.Models.TimeZone>();
+            }
+        }
+
+        public IRepository<Country> Countries
+        {
+            get
+            {
+                return this.GetRepository<Country>();
+            }
+        }
+
         public IUsersRepository Users
         {
             get

@@ -1,11 +1,14 @@
 namespace TwitterCopy.Data.Migrations
 {
     using System;
-    
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    
+    using TwitterCopy.Models;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<TwitterCopy.Data.TwitterCopyDbContext>
+    public class Configuration : DbMigrationsConfiguration<TwitterCopy.Data.TwitterCopyDbContext>
     {
         public Configuration()
         {
@@ -15,18 +18,98 @@ namespace TwitterCopy.Data.Migrations
 
         protected override void Seed(TwitterCopy.Data.TwitterCopyDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            if (context.Users.Count() > 0)
+            {
+                return;
+            }
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            this.SeedRoles(context);
+            this.SeedUsers(context);
+            this.SeedAdministrators(context);
+            this.SeedLanguages(context);
+            this.SeedTimeZones(context);
+            this.SeedCountries(context);  
+        }
+
+        protected void SeedRoles(TwitterCopyDbContext context)
+        {
+            foreach (var entity in context.Roles)
+            {
+                context.Roles.Remove(entity);
+            }
+
+            context.Roles.AddOrUpdate(new IdentityRole("Administrator"));
+        }
+
+        private void SeedLanguages(TwitterCopyDbContext context)
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                context.Languages.Add(new Language()
+                {
+                    Code = i.ToString(),
+                    Name = "language" + i
+                });
+            }
+        }
+
+        private void SeedCountries(TwitterCopyDbContext context)
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                context.Countries.Add(new Country()
+                {
+                    Code = i.ToString(),
+                    Name = "Country" + i
+                });
+            }
+        }
+
+        private void SeedTimeZones(TwitterCopyDbContext context)
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                context.TimeZones.Add(new TwitterCopy.Models.TimeZone()
+                {
+                    Code = i.ToString(),
+                    Name = "TimeZone" + i
+                });
+            }
+        }
+
+        private void SeedUsers(TwitterCopyDbContext context)
+        {
+            DateTime today = DateTime.Today;
+            if (!context.Users.Any(u => u.UserName == "founder"))
+            {
+                var store = new UserStore<ApplicationUser>(context);
+                var manager = new UserManager<ApplicationUser>(store);
+                for (int i = 0; i < 20; i++)
+                {
+                    ApplicationUser user = new ApplicationUser() { UserName = "founder", CreatedOn = today };
+                    user.Email = "tvetan@gbg.bg";
+                    user.UserName = "tvetan" + i;
+
+                    manager.Create(user, "tvetan" + i);
+                }
+            }
+        }
+
+        private void SeedAdministrators(TwitterCopyDbContext context)
+        {
+            var user = context.Users.FirstOrDefault();
+            var role = context.Roles.FirstOrDefault(r => r.Name == "Administrator");
+
+            if (user == null || role == null)
+            {
+                return;
+            }
+
+            user.Roles.Add(new IdentityUserRole
+            {
+                RoleId = role.Id,
+                UserId = user.Id,
+            });
         }
     }
 }
