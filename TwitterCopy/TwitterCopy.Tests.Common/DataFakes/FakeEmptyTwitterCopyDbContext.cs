@@ -2,7 +2,7 @@
 {
     using TwitterCopy.Data;
 
-    class FakeEmptyTwitterCopyDbContext : TwitterCopyDbContext
+    public class FakeEmptyTwitterCopyDbContext : TwitterCopyDbContext
     {
         public FakeEmptyTwitterCopyDbContext()
             : base("FakeEmptyTwitterCopyDbContext")

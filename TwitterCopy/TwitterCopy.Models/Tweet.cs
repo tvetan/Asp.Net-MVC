@@ -15,6 +15,7 @@ namespace TwitterCopy.Models
         [ForeignKey("AuthorId")]
         public ApplicationUser Author { get; set; }
 
+        [MaxLength(200, ErrorMessage="The length of the tweet canot be more than 200 characters.")]
         public string Status { get; set; }
 
         #region IAuditInfo

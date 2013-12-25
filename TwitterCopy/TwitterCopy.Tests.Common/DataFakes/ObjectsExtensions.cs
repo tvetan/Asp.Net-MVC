@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace TwitterCopy.Tests.Common.DataFakes
 {
-    public class ObjectsExtensions
+    public static class ObjectsExtensions
     {
         public static object ObjectClone(this object obj)
         {
