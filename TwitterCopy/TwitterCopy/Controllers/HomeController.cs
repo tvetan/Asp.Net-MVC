@@ -27,11 +27,22 @@ namespace TwitterCopy.Controllers
         public ActionResult Follow(string id)
         {
             var currentUser = this.GetLogInUser();
-
             var followingUser = this.Data.Users.GetById(id);
 
             currentUser.Followings.Add(followingUser);
             followingUser.Followers.Add(currentUser);
+            this.Data.SaveChanges();
+
+            return RedirectToAction("index");
+        }
+
+        public ActionResult UnFollow(string id)
+        {
+            var currentUser = this.GetLogInUser();
+            var followingUser = this.Data.Users.GetById(id);
+
+            currentUser.Followers.Remove(followingUser);
+            followingUser.Followers.Remove(currentUser);
             this.Data.SaveChanges();
 
             return RedirectToAction("index");

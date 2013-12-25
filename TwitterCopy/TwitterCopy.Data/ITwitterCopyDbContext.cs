@@ -10,7 +10,7 @@ namespace TwitterCopy.Data
 
     public interface ITwitterCopyDbContext
     {
-        IDbSet<UserProfile> UserProfiles { get; set; }
+        //IDbSet<UserProfile> UserProfiles { get; set; }
 
         IDbSet<Tweet> Tweets { get; set; }
 

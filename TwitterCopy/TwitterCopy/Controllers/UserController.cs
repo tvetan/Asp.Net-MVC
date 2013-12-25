@@ -25,7 +25,8 @@ namespace TwitterCopy.Controllers
 
             if (user == null)
             {
-                throw new ArgumentNullException("user", "There is no user found");
+                return HttpNotFound("There is no user with this username found");
+                //throw new ArgumentNullException("user", );
             }
 
             return View(user);
@@ -49,10 +50,8 @@ namespace TwitterCopy.Controllers
         public ActionResult RandomUsers()
         {
             var logInUser = this.GetLogInUser();
-            var followingsIds = logInUser.Followings.Select(user => user.Id);
-
-            var filteredUsers = this.Data.Users.All()
-                            .Where(user => user.Id != logInUser.Id && !followingsIds.Contains(user.Id));
+            var filteredUsers = this.Data.Users.GetUsersWithoutCurrentUsersAndHisFollowings(logInUser);
+               // .All().Where(user => user.Id != logInUser.Id && !followingsIds.Contains(user.Id));
 
             IEnumerable<ApplicationUser> randomUsers = this.GetRandomUsers(filteredUsers.ToList());
 
@@ -79,7 +78,11 @@ namespace TwitterCopy.Controllers
 
         public ActionResult Suggestions()
         {
-            return View();
+            var logInUser = this.GetLogInUser();
+            var users = this.Data.Users
+                .GetUsersWithoutCurrentUsersAndHisFollowings(logInUser).OrderBy(user => user.Followers.Count);
+
+            return View(users);
         }
 
         [ChildActionOnly]

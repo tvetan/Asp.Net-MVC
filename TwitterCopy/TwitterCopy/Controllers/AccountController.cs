@@ -164,7 +164,7 @@ namespace TwitterCopy.Controllers
                 ///    this.Data.Context.UserProfiles.Add(userProfile);
                 //     this.Data.SaveChanges();
 
-                var user = new ApplicationUser() { UserName = model.UserName, CreatedOn = today, Email = model.Email };
+                var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)

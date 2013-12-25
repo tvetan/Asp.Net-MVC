@@ -11,5 +11,7 @@ namespace TwitterCopy.Data.Repositories.Contracts
 
         ApplicationUser GetById(string id, bool includeProfile = false, bool includeTweets = false,
             bool includeFollowers = false, bool includeFollowing = false);
+
+        IQueryable<ApplicationUser> GetUsersWithoutCurrentUsersAndHisFollowings(ApplicationUser logInUser);
     }
 }

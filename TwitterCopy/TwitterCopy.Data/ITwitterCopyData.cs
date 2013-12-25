@@ -9,7 +9,7 @@ namespace TwitterCopy.Data
     {
         IUsersRepository Users { get;}
 
-        IUserProfileRepository UserProfile { get; }
+       // IUserProfileRepository UserProfile { get; }
         ITweetRepository Tweets { get;}
 
         TwitterCopyDbContext Context { get; }

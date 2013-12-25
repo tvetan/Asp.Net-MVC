@@ -16,7 +16,7 @@ namespace TwitterCopy.Data.Repositories
         {
         }
 
-        public UserProfile GetById(int id)
+        public UserProfile GetById(string id)
         {
             return this.All().FirstOrDefault(x => x.Id == id);
         }

@@ -59,13 +59,13 @@ namespace TwitterCopy.Data
             }
         }
 
-        public IUserProfileRepository UserProfile
-        {
-            get
-            {
-                return (UserProfileRepository)this.GetRepository<UserProfile>();
-            }
-        }
+        //public IUserProfileRepository UserProfile
+        //{
+        //    get
+        //    {
+        //        return (UserProfileRepository)this.GetRepository<UserProfile>();
+        //    }
+        //}
 
         public ITweetRepository Tweets
         {
@@ -112,10 +112,10 @@ namespace TwitterCopy.Data
                     type = typeof(TweetRepository);
                 }
 
-                if (typeof(T).IsAssignableFrom(typeof(UserProfile)))
-                {
-                    type = typeof(UserProfileRepository);
-                }
+                //if (typeof(T).IsAssignableFrom(typeof(UserProfile)))
+                //{
+                //    type = typeof(UserProfileRepository);
+                //}
 
                 this.repositories.Add(typeof(T), Activator.CreateInstance(type, this.context));
             }

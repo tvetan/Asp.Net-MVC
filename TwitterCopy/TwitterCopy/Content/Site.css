@@ -67,6 +67,7 @@ h3 {
 .account-summary {
     display: block;
     line-height: 16px;
+    margin-top: 10px;
 }
 
 .module {
@@ -262,9 +263,16 @@ h1, h2, h3, h4, h5, h6 {
     text-rendering: optimizeLegibility;
 }
 
+h2 {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 20px;
+}
+
 
 .list-item {
     padding: 12px;
+    border-bottom: 1px solid #e8e8e8;
 }
 
     .list-item:hover {
@@ -288,10 +296,10 @@ h1, h2, h3, h4, h5, h6 {
 .unfollow-text {
     display: none;
 }
-.follow-btn{
+.following-unfollow-btn{
     min-width: 90px;
 }
-.follow-btn:hover{
+.following-unfollow-btn:hover{
     background-color: #c43c35;
     background-repeat: repeat-x;
     background-image: -webkit-linear-gradient(#ee5f5b,#c43c35);
@@ -316,4 +324,14 @@ select, input[type="file"] {
 
 .form-group .col-md-10{
     text-align: left;
+}
+
+.btn-follow{
+    color: #333;
+    text-decoration: none;
+    background-color: #d8d8d8;
+    background-image: -webkit-linear-gradient(#f8f8f8,#d8d8d8);
+    background-image: linear-gradient(#f8f8f8,#d8d8d8);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    border-color: #bbb;
 }

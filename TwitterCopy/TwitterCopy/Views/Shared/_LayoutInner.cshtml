@@ -46,11 +46,13 @@
 
     <script>
         $(function () {
-            $(".follow-btn").hover(function (event) {
+            $(".following-unfollow-btn").hover(function (event) {
                 var $this = $(this);
                 $this.find(".follow-text").toggle();
                 $this.find(".unfollow-text").toggle();
             })
         });
     </script>
+
+    <script src="~/js/deactivate_active_link.js"></script>
 }

@@ -22,6 +22,8 @@
             this.tweets = new HashSet<Tweet>();
             this.followers = new HashSet<ApplicationUser>();
             this.followings = new HashSet<ApplicationUser>();
+            //this.UserProfile = new UserProfile();
+            this.CreatedOn = DateTime.Now;
         }
 
         public string Email { get; set; }
@@ -32,9 +34,9 @@
 
         public string FullName { get; set; }
 
-        public int? UserProfileId { get; set; }
+        //public int? UserProfileId { get; set; }
 
-        public virtual UserProfile UserProfile { get; set; }
+        //public virtual UserProfile UserProfile { get; set; }
 
         public virtual ICollection<Tweet> Tweets
         {
@@ -75,6 +77,7 @@
             }
         }
 
+        #region ISelectable
         public int? CountryId { get; set; }
 
         public virtual Country Country { get; set; }
@@ -83,10 +86,11 @@
 
         public virtual Language Language { get; set; }
 
-        //[DefaultValue(1)]
         public int? TimeZoneId { get; set; }
 
         public virtual TimeZone TimeZone { get; set; }
+
+        #endregion
 
         #region IAuditInfo
         [DataType(DataType.DateTime)]

@@ -31,12 +31,20 @@ namespace TwitterCopy.Data.Repositories
             return query.SingleOrDefault(u => u.Id == id);
         }
   
+        public IQueryable<ApplicationUser> GetUsersWithoutCurrentUsersAndHisFollowings(ApplicationUser logInUser)
+        {
+            var followingsIds = logInUser.Followings.Select(u => u.Id);
+            var users = this.All().Where(u => u.Id != logInUser.Id && !followingsIds.Contains(u.Id));
+
+            return users;
+        }
+
         private IQueryable<ApplicationUser> BuildUserQuery(bool includeProfile, bool includeTweets, bool includeFollowers, bool includeFollowing)
         {
             var query = this.DbSet.AsQueryable();
             if (includeProfile)
             {
-                query = this.DbSet.Include(u => u.UserProfile);
+               // query = this.DbSet.Include(u => u.UserProfile);
             }
 
             if (includeTweets)
@@ -55,6 +63,6 @@ namespace TwitterCopy.Data.Repositories
             }
 
             return query;
-        }  
+        }
     }
 }

@@ -11,15 +11,17 @@ namespace TwitterCopy.Data
 {
     public class TwitterCopyDbContext : IdentityDbContext<ApplicationUser>, ITwitterCopyDbContext
     {
-        public TwitterCopyDbContext() : this("TwitterCopyConnection")
+        public TwitterCopyDbContext() 
+            : this("TwitterCopyDb")
         {
         }
 
-        public TwitterCopyDbContext(string nameOrConnectionString) : base(nameOrConnectionString)
+        public TwitterCopyDbContext(string nameOrConnectionString)
+            : base(nameOrConnectionString)
         {
         }
 
-        public IDbSet<UserProfile> UserProfiles { get; set; }
+        //public IDbSet<UserProfile> UserProfiles { get; set; }
 
         public IDbSet<Tweet> Tweets { get; set; }
 
@@ -55,6 +57,10 @@ namespace TwitterCopy.Data
                         });
 
             modelBuilder.Entity<ApplicationUser>().HasMany(u => u.Tweets);
+
+
+            //modelBuilder.Entity<ApplicationUser>().HasRequired(x => x.UserProfile)
+            //    .WithRequiredPrincipal();
 
             base.OnModelCreating(modelBuilder);
         }
