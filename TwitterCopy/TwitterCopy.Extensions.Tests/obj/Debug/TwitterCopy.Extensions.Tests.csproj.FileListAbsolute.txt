@@ -1,0 +1,15 @@
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Extensions.Tests\bin\Debug\TwitterCopy.Extensions.Tests.dll
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Extensions.Tests\bin\Debug\TwitterCopy.Extensions.Tests.pdb
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Extensions.Tests\bin\Debug\TwitterCopy.Common.dll
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Extensions.Tests\bin\Debug\TwitterCopy.Models.dll
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Extensions.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Extensions.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Extensions.Tests\bin\Debug\EntityFramework.dll
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Extensions.Tests\bin\Debug\TwitterCopy.Common.pdb
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Extensions.Tests\bin\Debug\TwitterCopy.Models.pdb
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Extensions.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Extensions.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Extensions.Tests\bin\Debug\EntityFramework.xml
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Extensions.Tests\obj\Debug\TwitterCopy.Extensions.Tests.csprojResolveAssemblyReference.cache
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Extensions.Tests\obj\Debug\TwitterCopy.Extensions.Tests.dll
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Extensions.Tests\obj\Debug\TwitterCopy.Extensions.Tests.pdb
