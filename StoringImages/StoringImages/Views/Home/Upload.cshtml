@@ -1,0 +1,18 @@
+﻿@model StoringImages.Models.UploadFileModel
+@{
+    ViewBag.Title = "Upload";
+}
+
+<h2>Upload</h2>
+
+<div class="form-group">
+    @using (Html.BeginForm("upload", "home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <input type="file" name="file" />
+        <input type="submit" name="name" value="Submit" />
+        
+        @Html.ValidationMessageFor(x => x.File)
+    }
+</div>
+
+@Html.ValidationSummary(true)

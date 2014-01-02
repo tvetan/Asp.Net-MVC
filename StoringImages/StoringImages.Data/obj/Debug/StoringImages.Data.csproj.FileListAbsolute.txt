@@ -1,0 +1,16 @@
+C:\Users\1\documents\visual studio 2013\Projects\StoringImages\StoringImages.Data\bin\Debug\StoringImages.Data.dll.config
+C:\Users\1\documents\visual studio 2013\Projects\StoringImages\StoringImages.Data\bin\Debug\StoringImages.Data.dll
+C:\Users\1\documents\visual studio 2013\Projects\StoringImages\StoringImages.Data\bin\Debug\StoringImages.Data.pdb
+C:\Users\1\documents\visual studio 2013\Projects\StoringImages\StoringImages.Data\bin\Debug\EntityFramework.dll
+C:\Users\1\documents\visual studio 2013\Projects\StoringImages\StoringImages.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\1\documents\visual studio 2013\Projects\StoringImages\StoringImages.Data\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\1\documents\visual studio 2013\Projects\StoringImages\StoringImages.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\1\documents\visual studio 2013\Projects\StoringImages\StoringImages.Data\bin\Debug\EntityFramework.xml
+C:\Users\1\documents\visual studio 2013\Projects\StoringImages\StoringImages.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\1\documents\visual studio 2013\Projects\StoringImages\StoringImages.Data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\1\documents\visual studio 2013\Projects\StoringImages\StoringImages.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\1\documents\visual studio 2013\Projects\StoringImages\StoringImages.Data\obj\Debug\StoringImages.Data.csprojResolveAssemblyReference.cache
+C:\Users\1\documents\visual studio 2013\Projects\StoringImages\StoringImages.Data\obj\Debug\StoringImages.Data.dll
+C:\Users\1\documents\visual studio 2013\Projects\StoringImages\StoringImages.Data\obj\Debug\StoringImages.Data.pdb
+C:\Users\1\documents\visual studio 2013\Projects\StoringImages\StoringImages.Data\bin\Debug\StoringImages.Models.dll
+C:\Users\1\documents\visual studio 2013\Projects\StoringImages\StoringImages.Data\bin\Debug\StoringImages.Models.pdb

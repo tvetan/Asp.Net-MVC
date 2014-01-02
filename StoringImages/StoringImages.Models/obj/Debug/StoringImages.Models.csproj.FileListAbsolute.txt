@@ -1,0 +1,5 @@
+C:\Users\1\documents\visual studio 2013\Projects\StoringImages\StoringImages.Models\bin\Debug\StoringImages.Models.dll
+C:\Users\1\documents\visual studio 2013\Projects\StoringImages\StoringImages.Models\bin\Debug\StoringImages.Models.pdb
+C:\Users\1\documents\visual studio 2013\Projects\StoringImages\StoringImages.Models\obj\Debug\StoringImages.Models.dll
+C:\Users\1\documents\visual studio 2013\Projects\StoringImages\StoringImages.Models\obj\Debug\StoringImages.Models.pdb
+C:\Users\1\documents\visual studio 2013\Projects\StoringImages\StoringImages.Models\obj\Debug\StoringImages.Models.csprojResolveAssemblyReference.cache
