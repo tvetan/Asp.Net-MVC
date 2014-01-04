@@ -2,37 +2,28 @@
 @using TwitterCopy.Models;
 
 @{
-   @* ViewBag.Title = "Home Page";*@
     Layout = "_Layout.cshtml";
 }
 
 <div class="row">
-    
-    <div class="col-md-4">
-        <div class="module">
-            @RenderSection("NavLinks", false)
-        </div>
 
-        <div class="module">
-            @RenderSection("MiniProfile", false)
-        </div>
+    <div class="col-md-4 sidebar">
 
-        <div class="module">
-            @RenderSection("TweetToUser", false)
-        </div>
+        @RenderSection("NavLinks", false)
 
-        <div class="module">
-            @RenderSection("RandomUsers", false)
-        </div>
+        @RenderSection("MiniProfile", false)
+
+        @RenderSection("TweetToUser", false)
+
+        @RenderSection("RandomUsers", false)
+
     </div>
 
     <div class="col-md-7">
-         
-            @RenderSection("ProfileHeader", false)
-         
-        <div class="module row">
-            @RenderSection("ListItems", false)
-        </div>
+
+        @RenderSection("ProfileHeader", false)
+        
+        @RenderSection("ListItems", false)
     </div>
 </div>
 @RenderBody()
@@ -41,7 +32,7 @@
     <script>
         $(function () {
             $("#myModal").draggable({ handle: ".modal-header" });
-        })
+        });
     </script>
 
     <script>
@@ -55,4 +46,29 @@
     </script>
 
     <script src="~/js/deactivate_active_link.js"></script>
+
+    <script>
+        $(function () {
+            $("#create-tweet .tweet").attr({ disabled: "disabled" });
+
+            $("#tweetTextArea").on("keyup keypress", function () {
+                $this = $(this);
+                var statusTextLength = 140 - $this.val().length;
+                if (statusTextLength < 140 && statusTextLength >= 0) {
+                    $("#create-tweet .tweet").removeAttr("disabled");
+                }
+                else {
+                    $("#create-tweet .tweet").attr({ disabled: "disabled" });
+                }
+
+                $(".tweet-counter").text(statusTextLength);
+
+                if (statusTextLength < 0) {
+                    $(".tweet-counter").css({color: "red"})
+                } else {
+                    $(".tweet-counter").css({ color: "black" })
+                }
+            });
+        });
+    </script>
 }

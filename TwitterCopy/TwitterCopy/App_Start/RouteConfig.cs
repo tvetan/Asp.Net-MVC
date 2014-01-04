@@ -24,6 +24,7 @@ namespace TwitterCopy
                 url: "search",
                 defaults: new { controller = "Home", action = "search" }
                 );
+
             routes.MapRoute(
                 name: "MentionsRoute",
                 url: "Mentions",
@@ -81,8 +82,6 @@ namespace TwitterCopy
               defaults: new { controller = "home", action = "profiles" }
               );
 
-
-            // {username}/{action}
             routes.MapRoute(
                name: "UserDefault",
                url: "{username}",

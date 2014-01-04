@@ -5,32 +5,41 @@
     ViewBag.Title = title;
 }
 
+
 @section NavLinks{
-    <ul class="nav nav-pills nav-stacked">
-        <li>
-            <a href="@User.Identity.Name">Tweets</a>
-        </li>
-        <li class ="active">
-            @Html.ActionLink("Following", "Followings", "home")
-        </li>
-        <li>
-            @Html.ActionLink("Followers", "Followers", "home")
-        </li>
-    </ul>
+    <div class="module">
+        <ul class="nav nav-pills nav-stacked">
+            <li>
+                <a href="@User.Identity.Name">Tweets</a>
+            </li>
+            <li class="active">
+                @Html.ActionLink("Following", "Followings", "home")
+            </li>
+            <li>
+                @Html.ActionLink("Followers", "Followers", "home")
+            </li>
+        </ul>
+    </div>
 }
 
 @section RandomUsers {
-    @Html.Partial("_RandomUsersPartial")
+    <div class="module">
+        @Html.Partial("_RandomUsersPartial")
+    </div>
 }
 
 @section ProfileHeader{
-    @Html.Partial("_ProfileHeaderPartial", Model)
+    <div class="module">
+        @Html.Partial("_ProfileHeaderPartial", Model)
+    </div>
 }
 
 @section ListItems{
-    @Html.Action("ListFollowings", "user")
+    <div class="module">
+        @Html.Action("ListFollowings", "user")
+    </div>
 }
 
 @section Scripts{
-  
+
 }

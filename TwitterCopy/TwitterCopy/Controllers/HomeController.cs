@@ -54,21 +54,10 @@ namespace TwitterCopy.Controllers
             var words = search.Split(new char[]{' '}, StringSplitOptions.RemoveEmptyEntries);
             var filteredUsers = this.Data.Users.All()
                 .Where(user => words.Any(word => user.UserName.Contains(word)));
+            
             ViewBag.searchQuery = search;
 
             return View(filteredUsers);
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-            return View();
         }
         
         public ActionResult Mentions()
@@ -82,7 +71,7 @@ namespace TwitterCopy.Controllers
             var userId = this.User.Identity.GetUserId();
             var userWithFollowings = this.Data.Users.GetById(userId, false, false, false, true);
            
-            return View(userWithFollowings);
+            return this.View(userWithFollowings);
         }
 
         [ActionName("followers")]
@@ -91,7 +80,7 @@ namespace TwitterCopy.Controllers
             var userId = this.User.Identity.GetUserId();
             var userWithFollowers = this.Data.Users.GetById(userId, false, false, true, false);
 
-            return View(userWithFollowers);
+            return this.View(userWithFollowers);
         }
     }
 }

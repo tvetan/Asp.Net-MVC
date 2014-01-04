@@ -5,29 +5,37 @@
 }
 
 @section NavLinks{
-    <ul class="nav nav-pills nav-stacked">
-        <li>
-            <a href="@User.Identity.Name">Tweets</a>
-        </li>
-        <li >
-            @Html.ActionLink("Following", "Followings", "home")
-        </li>
-        <li class="active">
-            @Html.ActionLink("Followers", "Followers", "home")
-        </li>
-    </ul>
+    <div class="module">
+        <ul class="nav nav-pills nav-stacked">
+            <li>
+                <a href="@User.Identity.Name">Tweets</a>
+            </li>
+            <li>
+                @Html.ActionLink("Following", "Followings", "home")
+            </li>
+            <li class="active">
+                @Html.ActionLink("Followers", "Followers", "home")
+            </li>
+        </ul>
+    </div>
 }
 
 @section RandomUsers {
-    @Html.Partial("_RandomUsersPartial")
+    <div class="module">
+        @Html.Partial("_RandomUsersPartial")
+    </div>
 }
 
 @section ProfileHeader{
-    @Html.Partial("_ProfileHeaderPartial", Model)
+    <div class="module">
+        @Html.Partial("_ProfileHeaderPartial", Model)
+    </div>
 }
 
 @section ListItems{
-    @Html.Action("ListFollowers", "user")
+    <div class="module row">
+        @Html.Action("ListFollowers", "user")
+    </div>
 }
 
 @section Scripts{

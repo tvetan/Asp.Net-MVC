@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using TwitterCopy.Controllers.Base;
 using TwitterCopy.Data;
@@ -21,12 +23,11 @@ namespace TwitterCopy.Controllers
         // GET: /User/
         public ActionResult Index(string username)
         {
-            ApplicationUser user = GetUserByUserNameOrLogInUser(username);
+            ApplicationUser user = this.GetUserByUserNameOrLogInUser(username);
 
             if (user == null)
             {
-                return HttpNotFound("There is no user with this username found");
-                //throw new ArgumentNullException("user", );
+                throw new HttpException((int)HttpStatusCode.NotFound, "Username was not found");
             }
 
             return View(user);

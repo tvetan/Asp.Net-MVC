@@ -9,13 +9,15 @@
 }
 
 @section ListItems {
-    <div>
-        <h3>
-            Results for
-            <b>
-                @ViewBag.searchQuery
-            </b>
-        </h3>
+    <div class="module row">
+        <div>
+            <h3>
+                Results for
+                <b>
+                    @ViewBag.searchQuery
+                </b>
+            </h3>
+        </div>
+        @Html.Partial("_usersListPartial", Model)
     </div>
-    @Html.Partial("_usersListPartial", Model)
 }

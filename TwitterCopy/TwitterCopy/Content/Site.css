@@ -112,7 +112,7 @@ h3 {
     z-index: 1050;
     bottom: 40%;
     width: 560px;
-    height: 200px !important;
+    height: 250px !important;
     margin-left: -280px;
     background-color: #ffffff;
     border: 1px solid #999;
@@ -165,7 +165,10 @@ h3 {
         line-height: 18px;
         color: #555;
         text-align: center;
+        -webkit-text-shadow: 0 1px 0 #fff;
         text-shadow: 0 1px 0 #fff;
+        -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
         text-overflow: ellipsis;
         white-space: nowrap;
     }
@@ -183,6 +186,7 @@ h3 {
     font-size: 12px;
     line-height: 20px;
     color: #bbb;
+    -webkit-text-shadow: 0 -1px 1px rgba(0,0,0,.3);
     text-shadow: 0 -1px 1px rgba(0,0,0,.3);
     border-color: #111;
     -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.15);
@@ -209,6 +213,8 @@ input[type="text"] {
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    -moz-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
     transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
@@ -296,18 +302,20 @@ h2 {
 .unfollow-text {
     display: none;
 }
-.following-unfollow-btn{
+
+.following-unfollow-btn {
     min-width: 90px;
 }
-.following-unfollow-btn:hover{
-    background-color: #c43c35;
-    background-repeat: repeat-x;
-    background-image: -webkit-linear-gradient(#ee5f5b,#c43c35);
-    background-image: linear-gradient(#ee5f5b,#c43c35);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ee5f5b',endColorstr='#c43c35',GradientType=0);
-    border-color: #a93730;
-    border-bottom-color: #952f2a;
-}
+
+    .following-unfollow-btn:hover {
+        background-color: #c43c35;
+        background-repeat: repeat-x;
+        background-image: -webkit-linear-gradient(#ee5f5b,#c43c35);
+        background-image: linear-gradient(#ee5f5b,#c43c35);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ee5f5b',endColorstr='#c43c35',GradientType=0);
+        border-color: #a93730;
+        border-bottom-color: #952f2a;
+    }
 
 select {
     width: 220px;
@@ -322,11 +330,11 @@ select, input[type="file"] {
     line-height: 30px;
 }
 
-.form-group .col-md-10{
+.form-group .col-md-10 {
     text-align: left;
 }
 
-.btn-follow{
+.btn-follow {
     color: #333;
     text-decoration: none;
     background-color: #d8d8d8;
@@ -335,3 +343,32 @@ select, input[type="file"] {
     filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
     border-color: #bbb;
 }
+
+
+.glyphicon:before {
+    margin-right: 8px;
+}
+
+.sidebar .module{
+    background-color: #f9f9f9;
+}
+
+input[type=text], textarea{
+    border-radius: 5px;
+}
+
+input[type=text]:focus, textarea:focus, div[contenteditable="true"]:focus, div[contenteditable="true"].fake-focus {
+    outline: 0;
+    color: #333;
+    border-color: #56b4ef;
+    -webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,.05),0 0 8px rgba(82,168,236,.6);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,.05),0 0 8px rgba(82,168,236,.6);
+    border-radius: 5px;
+}
+
+.tweetTextArea{
+    width: 100%;
+    margin-bottom: 5px;
+    height: 120px;
+}
+
