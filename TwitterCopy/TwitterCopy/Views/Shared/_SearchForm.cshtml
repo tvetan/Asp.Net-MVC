@@ -1,5 +1,10 @@
-﻿@using (Html.BeginForm("search", "home", FormMethod.Get, new { @class = "navbar-left form-search" }))
-{
-    @Html.TextBox("search", null, new { @class = "input-medium search-query" })
-    <input type="submit" value="search" class="btn" />
-}
+﻿<div class="col-md-3 hidden-sm search-form navbar-right">
+    <form class="navbar-form" role="search" action="/search">
+        <div class="input-group">
+            <input type="text" class="form-control search-box" placeholder="Search" name="search" id="searchTerm">
+            <div class="input-group-btn">
+                <button class="btn btn-default btn-search" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+    </form>
+</div>

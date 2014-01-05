@@ -1,11 +1,8 @@
 ﻿@using Microsoft.AspNet.Identity
 
-<div class="navbar-right">
+<div>
     @if (Request.IsAuthenticated)
     {
-
-        @Html.Partial("_SearchForm")
-
         using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
         {
             @Html.AntiForgeryToken()
@@ -20,6 +17,8 @@
                 </li>
             </ul>
         }
+        
+        @Html.Partial("_SearchForm")
     }
     else
     {

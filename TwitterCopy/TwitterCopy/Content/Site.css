@@ -1,18 +1,24 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-image: url(bg.png);
+    background-position: right 40px;
+    background-attachment: fixed;
+    background-repeat: repeat;
+    background-repeat: no-repeat;
+    background-color: #C0DEED;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding: 54px 14px 15px;
     margin: 0 auto;
+    padding-top: 20px;
+    background-color: rgba(255,255,255,0.1)
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
-select,
-textarea {
+select {
     max-width: 280px;
 }
 
@@ -73,12 +79,15 @@ h3 {
 .module {
     position: relative;
     margin-bottom: 10px;
+    background-color: #fff;
     line-height: 16px;
     border-radius: 6px;
     -webkit-text-shadow: 0 1px 0 #fff;
     text-shadow: 0 1px 0 #fff;
     border: 1px solid #eee;
     padding: 12px;
+    text-shadow: 0 1px 0 #fff;
+    border: 1px solid rgba(0,0,0,0.1);
 }
 
 .row {
@@ -372,3 +381,79 @@ input[type=text]:focus, textarea:focus, div[contenteditable="true"]:focus, div[c
     height: 120px;
 }
 
+.tweet-counter{
+    margin-left: 10px;
+}
+
+.stats{
+    overflow: hidden;
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.create-tweet{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.user-footer{
+    font-size: 13px;
+    color: #999;
+}
+
+.user-footer ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.user-footer ul .footer-item, .user-footer ul .copyright-item{
+    display: inline;
+}
+
+.user-footer ul:hover .footer-item{
+    color: #555;
+}
+
+.input-group .search-box, .input-group .search-box:focus{
+    border-bottom-left-radius: 100px;
+    border-top-left-radius: 100px;
+    border-right: none;
+}
+
+.input-group-btn .btn-search, .input-group-btn .btn-search:focus{
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border-left: none;
+}
+
+.search-empty-result{
+    color: #777;
+    text-align: center;
+    padding: 20px;
+}
+
+.content-search-home{
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+}
+
+.content-search-home .module{
+    background-color: #f9f9f9;
+}
+
+.content-search-home h1{
+    font-size: 32px;
+    padding: 30px 20px 30px 20px;
+}
+
+.search-box-home{
+    padding: 0 60px;
+}
+
+.search-box-home .extended-text-box{
+    width: 100%;
+    max-width: none;
+    margin-bottom: 10px;
+}

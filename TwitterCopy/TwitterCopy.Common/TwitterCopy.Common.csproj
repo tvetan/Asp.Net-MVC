@@ -58,6 +58,7 @@
     <Compile Include="AgeCalculator.cs" />
     <Compile Include="Extensions\ApplicationUserExtenstions.cs" />
     <Compile Include="Extensions\TweetExtensions.cs" />
+    <Compile Include="MailSender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

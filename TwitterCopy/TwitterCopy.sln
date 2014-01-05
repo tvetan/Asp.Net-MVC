@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterCopy.Tests.Common", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterCopy.Extensions.Tests", "TwitterCopy.Extensions.Tests\TwitterCopy.Extensions.Tests.csproj", "{4CA3626A-E15B-4A96-AA61-146BEDDB98C2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterCopy.Data.Tests", "TwitterCopy.Data.Tests\TwitterCopy.Data.Tests.csproj", "{1B6E16A6-45CF-4F8C-AFF5-DB7C00FB287C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterCopy.Web.Tests", "TwitterCopy.Web.Tests\TwitterCopy.Web.Tests.csproj", "{DEF9B21B-9EDF-4CCD-9276-9C1DFEE99AC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,14 @@ Global
 		{4CA3626A-E15B-4A96-AA61-146BEDDB98C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CA3626A-E15B-4A96-AA61-146BEDDB98C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CA3626A-E15B-4A96-AA61-146BEDDB98C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B6E16A6-45CF-4F8C-AFF5-DB7C00FB287C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B6E16A6-45CF-4F8C-AFF5-DB7C00FB287C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B6E16A6-45CF-4F8C-AFF5-DB7C00FB287C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B6E16A6-45CF-4F8C-AFF5-DB7C00FB287C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEF9B21B-9EDF-4CCD-9276-9C1DFEE99AC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEF9B21B-9EDF-4CCD-9276-9C1DFEE99AC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEF9B21B-9EDF-4CCD-9276-9C1DFEE99AC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEF9B21B-9EDF-4CCD-9276-9C1DFEE99AC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,5 +72,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{E750C45F-8F14-4EAC-B870-0D94205E6469} = {A2BCE201-9845-4153-85F9-7F8FF307923A}
 		{4CA3626A-E15B-4A96-AA61-146BEDDB98C2} = {A2BCE201-9845-4153-85F9-7F8FF307923A}
+		{1B6E16A6-45CF-4F8C-AFF5-DB7C00FB287C} = {A2BCE201-9845-4153-85F9-7F8FF307923A}
+		{DEF9B21B-9EDF-4CCD-9276-9C1DFEE99AC3} = {A2BCE201-9845-4153-85F9-7F8FF307923A}
 	EndGlobalSection
 EndGlobal

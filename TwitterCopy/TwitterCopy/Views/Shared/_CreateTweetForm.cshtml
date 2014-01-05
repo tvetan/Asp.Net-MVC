@@ -2,7 +2,7 @@
 
 @using (Html.BeginForm("Create", "tweet", FormMethod.Post))
 {
-    <div id="create-tweet">
+    <div id="create-tweet" class="create-tweet">
         <div>
             @Html.TextAreaFor(model => model.Status, new { id = "tweetTextArea", @class = "tweetTextArea", placeholder = "Compose new Tweet..." })
         </div>

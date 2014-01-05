@@ -47,18 +47,6 @@ namespace TwitterCopy.Controllers
 
             return RedirectToAction("index");
         }
-
-        [HttpGet]
-        public ActionResult Search(string search)
-        {
-            var words = search.Split(new char[]{' '}, StringSplitOptions.RemoveEmptyEntries);
-            var filteredUsers = this.Data.Users.All()
-                .Where(user => words.Any(word => user.UserName.Contains(word)));
-            
-            ViewBag.searchQuery = search;
-
-            return View(filteredUsers);
-        }
         
         public ActionResult Mentions()
         {

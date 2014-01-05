@@ -22,7 +22,7 @@ namespace TwitterCopy
             routes.MapRoute(
                 name: "AccountRoute",
                 url: "search",
-                defaults: new { controller = "Home", action = "search" }
+                defaults: new { controller = "Search", action = "result" }
                 );
 
             routes.MapRoute(

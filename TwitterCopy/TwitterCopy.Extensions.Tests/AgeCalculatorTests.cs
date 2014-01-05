@@ -18,13 +18,14 @@
         }
 
         [TestMethod]
-        public void ValidDateShouldReturnValidAge()
+        public void AgeShouldReturnProperAgeIfDayAndMonthAreTheSame()
         {
-            DateTime? birthDate = new DateTime(2005, 3, 3);
+            DateTime? birthDate = DateTime.Now.AddYears(-10);
 
             byte? age = AgeCalculator.Age(birthDate);
+            byte expectedAge = 10;
 
-            Assert.IsNotNull(age);
+            Assert.AreEqual(expectedAge, age);
         }
     }
 }
