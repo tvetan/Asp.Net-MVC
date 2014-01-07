@@ -12,3 +12,5 @@ E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Web.Common\b
 E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Web.Common\obj\Debug\TwitterCopy.Web.Common.csprojResolveAssemblyReference.cache
 E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Web.Common\obj\Debug\TwitterCopy.Web.Common.dll
 E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Web.Common\obj\Debug\TwitterCopy.Web.Common.pdb
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Web.Common\bin\Debug\System.Web.Mvc.dll
+E:\GithubRepositories\Photoshop\Asp.Net-MVC\TwitterCopy\TwitterCopy.Web.Common\bin\Debug\System.Web.Mvc.xml

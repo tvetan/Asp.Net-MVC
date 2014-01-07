@@ -4,7 +4,17 @@
     <h2>Tweets</h2>
 </div>
 
-@foreach (var tweet in Model)
+@if (Model.Count() > 0)
 {
-    @Html.Partial("_TweetsListItem", tweet)
+    foreach (var tweet in Model)
+    {
+        @Html.Partial("_TweetsListItem", tweet)
+    }
 }
+else
+{
+    <div  class="empty-body" > 
+        <h2>There are no tweets</h2>
+    </div>
+}
+

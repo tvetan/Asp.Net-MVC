@@ -2,17 +2,14 @@ namespace TwitterCopy.Data
 {
     using System;
     using System.Data.Entity;
-    using System.Data.Entity.Validation;
-    using System.Diagnostics;
-    using System.Linq;
-    using Microsoft.AspNet.Identity.EntityFramework;
+    using System.Data.Entity.Infrastructure;
     using TwitterCopy.Models;
 
-    public interface ITwitterCopyDbContext
+    public interface ITwitterCopyDbContext : IDisposable
     {
-        //IDbSet<UserProfile> UserProfiles { get; set; }
-
         IDbSet<Tweet> Tweets { get; set; }
+
+        IDbSet<FeedbackReport> FeedbackReports { get; set; }
 
         IDbSet<Language> Languages { get; set; }
 
@@ -22,10 +19,10 @@ namespace TwitterCopy.Data
 
         DbContext DbContext { get; }
 
-        IDbSet<T> Set<T>() where T : class;   
+        DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
 
-        int SaveChanges();
+        IDbSet<T> Set<T>() where T : class;
 
-        void ApplyAuditInfoRules();
+        int SaveChanges();  
     }
 }

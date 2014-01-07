@@ -1,0 +1,7 @@
+﻿@using TwitterCopy.Web.Common.EnumExtensions;
+
+@{
+    var items = typeof(FeedbackReportType).GetItems((int?)Model);
+}
+
+@Html.DropDownList("", items, " - ")

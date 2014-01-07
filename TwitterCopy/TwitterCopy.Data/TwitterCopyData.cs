@@ -5,6 +5,7 @@ using TwitterCopy.Data.Repositories;
 using TwitterCopy.Data.Repositories.Base;
 using TwitterCopy.Data.Repositories.Contracts;
 using TwitterCopy.Models;
+using TwitterCopy.Models.Contracts;
 
 namespace TwitterCopy.Data
 {
@@ -59,19 +60,19 @@ namespace TwitterCopy.Data
             }
         }
 
-        //public IUserProfileRepository UserProfile
-        //{
-        //    get
-        //    {
-        //        return (UserProfileRepository)this.GetRepository<UserProfile>();
-        //    }
-        //}
-
         public ITweetRepository Tweets
         {
             get
             {
                 return (TweetRepository)this.GetRepository<Tweet>();
+            }
+        }
+
+        public IDeletableEntityRepository<FeedbackReport> FeedbackReports
+        {
+            get
+            {
+                return this.GetDeletableEntityRepository<FeedbackReport>();
             }
         }
 
@@ -112,15 +113,21 @@ namespace TwitterCopy.Data
                     type = typeof(TweetRepository);
                 }
 
-                //if (typeof(T).IsAssignableFrom(typeof(UserProfile)))
-                //{
-                //    type = typeof(UserProfileRepository);
-                //}
-
                 this.repositories.Add(typeof(T), Activator.CreateInstance(type, this.context));
             }
 
             return (IRepository<T>)this.repositories[typeof(T)];
+        }
+
+        private IDeletableEntityRepository<T> GetDeletableEntityRepository<T>() where T : class, IDeletableEntity
+        {
+            if (!this.repositories.ContainsKey(typeof(T)))
+            {
+                var type = typeof(DeletableEntityRepository<T>);
+                this.repositories.Add(typeof(T), Activator.CreateInstance(type, this.context));
+            }
+
+            return (IDeletableEntityRepository<T>)this.repositories[typeof(T)];
         }
     }
 }

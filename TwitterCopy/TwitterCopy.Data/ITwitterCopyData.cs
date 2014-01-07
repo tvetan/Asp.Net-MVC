@@ -1,24 +1,26 @@
-﻿using System;
-using TwitterCopy.Data.Repositories;
-using TwitterCopy.Data.Repositories.Contracts;
-using TwitterCopy.Models;
-
-namespace TwitterCopy.Data
+﻿namespace TwitterCopy.Data
 {
+    using System;
+
+    using TwitterCopy.Data.Repositories;
+    using TwitterCopy.Data.Repositories.Contracts;
+    using TwitterCopy.Models;
+
     public interface ITwitterCopyData : IDisposable
     {
-        IUsersRepository Users { get;}
+        IUsersRepository Users { get; }
 
-       // IUserProfileRepository UserProfile { get; }
-        ITweetRepository Tweets { get;}
+        ITweetRepository Tweets { get; }
 
         TwitterCopyDbContext Context { get; }
 
-        IRepository<Language> Languages{ get; }
+        IRepository<Language> Languages { get; }
 
         IRepository<TwitterCopy.Models.TimeZone> TimeZones { get; }
 
-        IRepository<Country> Countries{ get; }
+        IRepository<Country> Countries { get; }
+
+        IDeletableEntityRepository<FeedbackReport> FeedbackReports { get; }
 
         int SaveChanges();
     }

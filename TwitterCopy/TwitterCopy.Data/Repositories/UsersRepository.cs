@@ -9,7 +9,7 @@ namespace TwitterCopy.Data.Repositories
 {
     public class UsersRepository : GenericRepository<ApplicationUser>, IUsersRepository
     {
-        public UsersRepository(TwitterCopyDbContext context)
+        public UsersRepository(ITwitterCopyDbContext context)
             : base(context)
         {
         }
@@ -37,6 +37,11 @@ namespace TwitterCopy.Data.Repositories
             var users = this.All().Where(u => u.Id != logInUser.Id && !followingsIds.Contains(u.Id));
 
             return users;
+        }
+
+        public ApplicationUser GetByEmail(string userEmail)
+        {
+            return this.All().FirstOrDefault(x => x.Email == userEmail);
         }
 
         private IQueryable<ApplicationUser> BuildUserQuery(bool includeProfile, bool includeTweets, bool includeFollowers, bool includeFollowing)

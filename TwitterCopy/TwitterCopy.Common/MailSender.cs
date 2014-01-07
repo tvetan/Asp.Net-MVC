@@ -1,14 +1,15 @@
 ﻿namespace TwitterCopy.Common
 {
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Mail;
     using System.Text;
 
     public sealed class MailSender
     {
-        private const string SendFrom = "tvetan@gbg.bg";
+        private const string SendFrom = "krasi286@gmail.com";
         private const string SendFromName = "TwitterCopy";
-        private const string Password = "__YOUR_PASSWORD_HERE__";
+        private const string Password = "__PASSWORD__";
 
         private const string ServerAddress = "smtp.gmail.com";
         private const int ServerPort = 587;
@@ -20,10 +21,19 @@
 
         private MailSender()
         {
-            this.mailClient = new SmtpClient()
+
+            this.mailClient = new SmtpClient
             {
-                DeliveryMethod = SmtpDeliveryMethod.PickupDirectoryFromIis
+                Credentials = new NetworkCredential(SendFrom, Password),
+                Port = ServerPort,
+                Host = ServerAddress,
+                EnableSsl = true,
             };
+
+            //this.mailClient = new SmtpClient()
+            //{
+            //    DeliveryMethod = SmtpDeliveryMethod.PickupDirectoryFromIis
+            //};
         }
 
         public static MailSender Instance

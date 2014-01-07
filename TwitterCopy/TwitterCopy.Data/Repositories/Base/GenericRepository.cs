@@ -10,7 +10,7 @@ namespace TwitterCopy.Data.Repositories.Base
     public class GenericRepository<T> : IRepository<T> where T : class
     {
 
-        public GenericRepository(TwitterCopyDbContext context)
+        public GenericRepository(ITwitterCopyDbContext context)
         {
             if (context == null)
             {
@@ -27,9 +27,9 @@ namespace TwitterCopy.Data.Repositories.Base
             set;
         }
 
-        protected TwitterCopyDbContext Context { get; set; }
+        protected ITwitterCopyDbContext Context { get; set; }
 
-        public IQueryable<T> All()
+        public virtual IQueryable<T> All()
         {
             return this.DbSet.AsQueryable();
         }
@@ -63,6 +63,19 @@ namespace TwitterCopy.Data.Repositories.Base
         public virtual T GetById(int id)
         {
             return this.DbSet.Find(id);
+        }
+
+        public virtual void Add(T entity)
+        {
+            DbEntityEntry entry = this.Context.Entry(entity);
+            if (entry.State != EntityState.Detached)
+            {
+                entry.State = EntityState.Added;
+            }
+            else
+            {
+                this.DbSet.Add(entity);
+            }
         }
     
         public void Update(T entity)

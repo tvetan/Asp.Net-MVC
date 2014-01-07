@@ -77,6 +77,8 @@
             }
         }
 
+        public Guid? ForgottenPasswordToken { get; set; }
+
         #region ISelectable
         public int? CountryId { get; set; }
 

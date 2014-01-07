@@ -47,10 +47,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationUser.cs" />
+    <Compile Include="Contracts\DeletebleEntity.cs" />
     <Compile Include="Contracts\IAuditInfo.cs" />
+    <Compile Include="Contracts\IDeletableEntity.cs" />
     <Compile Include="Contracts\ISelectable.cs" />
     <Compile Include="Contracts\IUsers.cs" />
     <Compile Include="Country.cs" />
+    <Compile Include="FeedbackReport.cs" />
+    <Compile Include="FeedbackReportType.cs" />
     <Compile Include="Language.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Selectable.cs" />

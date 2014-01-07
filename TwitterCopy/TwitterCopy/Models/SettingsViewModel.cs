@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace TwitterCopy.Models
+﻿namespace TwitterCopy.Models
 {
+    using System.Collections.Generic;
+
     public class SettingsViewModel
     {
         public string Id { get; set; }

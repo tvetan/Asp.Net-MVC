@@ -18,7 +18,8 @@
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
-select {
+select,
+textarea {
     max-width: 280px;
 }
 
@@ -85,7 +86,6 @@ h3 {
     -webkit-text-shadow: 0 1px 0 #fff;
     text-shadow: 0 1px 0 #fff;
     border: 1px solid #eee;
-    padding: 12px;
     text-shadow: 0 1px 0 #fff;
     border: 1px solid rgba(0,0,0,0.1);
 }
@@ -106,10 +106,6 @@ h3 {
     box-shadow: inset 0 -1px 0 rgba(0,0,0,.1);
 }
 
-#tweetTextArea {
-    color: #7612B8;
-}
-
 .modal-backdroup.fade.in {
     top: 10%;
 }
@@ -124,7 +120,6 @@ h3 {
     height: 250px !important;
     margin-left: -280px;
     background-color: #ffffff;
-    border: 1px solid #999;
     border: 1px solid #999;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
@@ -207,7 +202,9 @@ h3 {
     background-repeat: repeat-x;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="password"],
+input[type="email"]{
     display: block;
     width: 100%;
     height: 34px;
@@ -227,7 +224,9 @@ input[type="text"] {
     transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
-    input[type="text"]:focus {
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    input[type="email"]:focus{
         border-color: #66afe9;
         outline: 0;
         -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
@@ -242,8 +241,8 @@ input[type="text"] {
 .content-header {
     min-height: 20px;
     padding: 12px;
+    padding-left: 20px;
     background-color: #fff;
-    border-bottom: 1px solid #e8e8e8;
     border-radius: 5px 5px 0 0;
 }
 
@@ -287,7 +286,8 @@ h2 {
 
 .list-item {
     padding: 12px;
-    border-bottom: 1px solid #e8e8e8;
+    padding-left: 20px;
+    border-top: 1px solid #e8e8e8;
 }
 
     .list-item:hover {
@@ -362,6 +362,10 @@ select, input[type="file"] {
     background-color: #f9f9f9;
 }
 
+.module-inner{
+    padding: 10px 10px 10px 10px;
+}
+
 input[type=text], textarea{
     border-radius: 5px;
 }
@@ -378,7 +382,14 @@ input[type=text]:focus, textarea:focus, div[contenteditable="true"]:focus, div[c
 .tweetTextArea{
     width: 100%;
     margin-bottom: 5px;
-    height: 120px;
+    height: 32px;
+    color: #7612B8;
+    padding: 5px;
+    line-height: 20px;
+}
+
+.tweetTextArea:focus{
+    height: 100px;
 }
 
 .tweet-counter{
@@ -456,4 +467,48 @@ input[type=text]:focus, textarea:focus, div[contenteditable="true"]:focus, div[c
     width: 100%;
     max-width: none;
     margin-bottom: 10px;
+}
+
+.forgotten-password{
+    padding: 0 100px 50px 100px;
+}
+
+.forgotten-password-header{
+    
+}
+
+.forgotten-password-header h2{
+    margin: 50px 0;
+    font-weight: bolder;
+    font-size: 28px;
+}
+
+.empty-body{
+    border-top: 1px solid #e8e8e8;
+    padding: 20px;
+    text-align: center;
+}
+
+.content{
+    padding: 10px;
+}
+
+.feedback-module{
+    padding-left: 30px;
+}
+
+.feedback-module .content-header{
+    border-bottom: 1px solid #eee;
+}
+
+.feedback-module .feedback-module-title{
+    padding-top: 10px;
+    padding-bottom: 30px;
+    font-weight: bolder;
+}
+
+.feedback-module .feedback-description{
+    width: 280px;
+    padding: 5px;
+    line-height: 18px;
 }

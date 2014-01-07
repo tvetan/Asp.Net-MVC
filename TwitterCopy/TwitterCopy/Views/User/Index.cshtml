@@ -3,44 +3,52 @@
 
 @model TwitterCopy.Models.ApplicationUser
 @{
-    string title = User.Identity.Name + " (" + User.Identity.Name +") on Twitter Copy";
+    string title = User.Identity.Name + " (" + User.Identity.Name + ") on Twitter Copy";
     ViewBag.Title = title;
 }
 
 @section NavLinks{
-    <ul class="nav nav-pills nav-stacked">
-        <li class="active">          
-            <a href="">Tweets</a>
-        </li>
-        <li>
-            @Html.ActionLink("Following","Followings","home")
-        </li>
-        <li>
-            @Html.ActionLink("Followers", "Followers", "home")
-        </li>
-    </ul>
+    <div class="module">
+        <ul class="nav nav-pills nav-stacked">
+            <li class="active">
+                <a href="">Tweets</a>
+            </li>
+            <li>
+                @Html.ActionLink("Following", "Followings", "home")
+            </li>
+            <li>
+                @Html.ActionLink("Followers", "Followers", "home")
+            </li>
+        </ul>
+    </div>
 }
 
 @if (User.Identity.GetUserId() != Model.Id)
 {
     @section TweetToUser{
         <p>Tweet to @Model.UserName</p>
-       @Html.Partial("_CreateTweetForm", new CreateTweetViewModel())
-    }   
+        @Html.Partial("_CreateTweetForm", new CreateTweetViewModel())
+    }
 }
 
-
-
 @section RandomUsers {
-    @Html.Partial("_RandomUsersPartial")
+    <div class="module">
+        <div class="module-inner">
+            @Html.Partial("_RandomUsersPartial")
+        </div>
+    </div>
 }
 
 @section ProfileHeader{
-    @Html.Partial("_ProfileHeaderPartial", Model)
+    <div class="module">
+        @Html.Partial("_ProfileHeaderPartial", Model)
+    </div>
 }
 
 @section ListItems{
-    @Html.Action("listTweets", "tweet")
+    <div class="module">
+        @Html.Action("listTweets", "tweet")
+    </div>
 }
 
 @section Scripts{
@@ -49,9 +57,9 @@
             $(".active").on("click", function (event) {
                 event.preventDefault();
             });
-    
-           $("#tweetTextArea").val("@@" + "@Model.UserName ");
-           // $('#tweetTextArea').append(@Model.UserName); 
+
+            $("#tweetTextArea").val("@@" + "@Model.UserName ");
+            // $('#tweetTextArea').append(@Model.UserName);
         });
-    </script>  
+    </script>
 }

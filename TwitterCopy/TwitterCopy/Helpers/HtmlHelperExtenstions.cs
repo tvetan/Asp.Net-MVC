@@ -34,6 +34,7 @@
             TagBuilder usernameLink = new TagBuilder("a");
             usernameLink.SetInnerText("@" + username);
             usernameLink.MergeAttribute("href", username);
+
             return usernameLink;
         }
 

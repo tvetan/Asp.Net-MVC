@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using TwitterCopy.Web.Common;
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -41,6 +43,30 @@
         </div>
     </div>
     <div class="container body-content">
+        @if (ViewBag.SystemMessages != null)
+        {
+            foreach (var message in (SystemMessageCollection)ViewBag.SystemMessages)
+            {
+                string messageClass = "alert alert-success";
+                switch (message.Type)
+                {
+                    case SystemMessageType.Informational:
+                        messageClass = "alert alert-info";
+                        break;
+                    case SystemMessageType.Success:
+                        messageClass = "alert alert-success";
+                        break;
+                    case SystemMessageType.Warning:
+                        messageClass = "alert alert-warning";
+                        break;
+                    case SystemMessageType.Error:
+                        messageClass = "alert alert-danger";
+                        break;
+                }
+                
+                @:<div class="@messageClass"><strong>@Html.Raw(message.Content)</strong></div>
+            }
+        }
         @RenderBody()
     </div>
     <!-- Modal -->

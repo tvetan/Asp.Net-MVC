@@ -86,8 +86,8 @@ namespace TwitterCopy.Data.Migrations
                 var manager = new UserManager<ApplicationUser>(store);
                 for (int i = 0; i < 20; i++)
                 {
-                    ApplicationUser user = new ApplicationUser() { UserName = "founder", CreatedOn = today };
-                    user.Email = "tvetan@gbg.bg";
+                    ApplicationUser user = new ApplicationUser() { CreatedOn = today };
+                    user.Email = "tvetan@gbg.bg" + i;
                     user.UserName = "tvetan" + i;
 
                     manager.Create(user, "tvetan" + i);

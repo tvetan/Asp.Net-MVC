@@ -11,7 +11,7 @@ namespace TwitterCopy.Data.Repositories
 {
     class UserProfileRepository : GenericRepository<UserProfile>, IUserProfileRepository
     {
-        public UserProfileRepository(TwitterCopyDbContext context)
+        public UserProfileRepository(ITwitterCopyDbContext context)
             : base(context)
         {
         }

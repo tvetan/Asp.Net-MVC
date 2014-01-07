@@ -6,7 +6,6 @@ namespace TwitterCopy.Models
     {
         [Required]
         [Display(Name = "User name")]
-        [RegularExpression("^@", ErrorMessage = "The username shoudn't contain @ symbol")]
         public string UserName { get; set; }
 
         [Required]

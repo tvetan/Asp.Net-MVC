@@ -55,6 +55,8 @@
     <Compile Include="ITwitterCopyDbContext.cs">
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="Repositories\Base\DeletableEntityRepository.cs" />
+    <Compile Include="Repositories\Contracts\IDeletableEntityRepository.cs" />
     <Compile Include="Repositories\Contracts\IUserProfileRepository.cs" />
     <Compile Include="Repositories\UserProfileRepository.cs" />
     <Compile Include="TwitterCopyData.cs" />

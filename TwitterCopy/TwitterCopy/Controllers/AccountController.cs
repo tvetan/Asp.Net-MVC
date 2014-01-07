@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -10,23 +11,23 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using TwitterCopy.Data;
 using TwitterCopy.Models;
+using TwitterCopy.Models.Account;
 using TwitterCopy.Web.Common;
 using TwitterCopy.Controllers.Base;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Collections.Generic;
+using TwitterCopy.Common;
 
 namespace TwitterCopy.Controllers
 {
     public class AccountController : BaseController
     {
-        public AccountController(ITwitterCopyData data)
-            : this(data, new TwitterCopyUserManager<ApplicationUser>(new UserStore<ApplicationUser>(data.Context.DbContext)))
+        public AccountController(ITwitterCopyData data) : this(data, new TwitterCopyUserManager<ApplicationUser>(new UserStore<ApplicationUser>(data.Context.DbContext)))
         {
         }
 
-        public AccountController(ITwitterCopyData data, UserManager<ApplicationUser> userManager)
-            : base(data)
+        public AccountController(ITwitterCopyData data, UserManager<ApplicationUser> userManager) : base(data)
         {
             this.UserManager = userManager;
         }
@@ -156,14 +157,18 @@ namespace TwitterCopy.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            if (this.Data.Users.All().Any(x => x.Email == model.Email))
+            {
+                ModelState.AddModelError("Email", "Email already registered");
+            }
+
+            if (this.Data.Users.All().Any(x => x.UserName == model.UserName))
+            {
+                ModelState.AddModelError("Username", "Username already registered");
+            }
+
             if (ModelState.IsValid)
             {
-                DateTime today = DateTime.Today;
-                // var userProfile = new UserProfile() { Email = model.Email };
-
-                ///    this.Data.Context.UserProfiles.Add(userProfile);
-                //     this.Data.SaveChanges();
-
                 var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
 
@@ -176,7 +181,6 @@ namespace TwitterCopy.Controllers
                 {
                     AddErrors(result);
                 }
-
             }
 
             // If we got this far, something failed, redisplay form
@@ -208,11 +212,11 @@ namespace TwitterCopy.Controllers
         public ActionResult Manage(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-                : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
-                : message == ManageMessageId.Error ? "An error has occurred."
-                : "";
+                                   message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
+                                   : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
+                                     : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
+                                       : message == ManageMessageId.Error ? "An error has occurred."
+                                         : "";
             ViewBag.HasLocalPassword = HasPassword();
             ViewBag.ReturnUrl = Url.Action("Manage");
             return View();
@@ -378,7 +382,7 @@ namespace TwitterCopy.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            AuthenticationManager.SignOut();
+            this.AuthenticationManager.SignOut();
             return RedirectToAction("Index", "Home");
         }
 
@@ -408,10 +412,117 @@ namespace TwitterCopy.Controllers
             base.Dispose(disposing);
         }
 
+        public ActionResult ForgottenPassword()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        public ActionResult ForgottenPassword(string userEmail)
+        {
+            if (string.IsNullOrEmpty(userEmail))
+            {
+                this.ModelState.AddModelError("userEmail", "User email is required");
+            }
+
+            var user = this.Data.Users.GetByEmail(userEmail);
+
+            if (user == null)
+            {
+                this.ModelState.AddModelError("userEmail", "The is no user with this email");
+            }
+            else
+            {
+                user.ForgottenPasswordToken = Guid.NewGuid();
+                this.Data.SaveChanges();
+                this.SendForgottenPasswordToUser(user);
+                this.TempData["InfoMessage"] = "Email was sent";
+
+                return this.RedirectToAction("ForgottenPassword");
+            }
+
+            return this.View();
+        }
+
+        private void SendForgottenPasswordToUser(ApplicationUser user)
+        {
+            var mailSender = MailSender.Instance;
+
+            var forgottenPasswordEmailTitle = string.Format("Forgotten Password for user {0}", user.UserName);
+
+            var forgottenPasswordEmailBody = string.Format("Click the link to restore password <a href='{0}'>{0}</a>",
+                Url.Action("ChangePassword", "Account", new { token = user.ForgottenPasswordToken }, Request.Url.Scheme));
+
+
+            mailSender.SendMail(user.Email, forgottenPasswordEmailTitle, forgottenPasswordEmailBody);
+        }
+
+
+        public ActionResult ChangePassword(string token)
+        {
+            Guid guid;
+            if (!Guid.TryParse(token, out guid))
+            {
+                throw new HttpException((int)HttpStatusCode.BadRequest, "Invalid token!");
+            }
+
+            var user = this.Data.Users.All().FirstOrDefault(x => x.ForgottenPasswordToken == guid);
+
+            if (user == null)
+            {
+                throw new HttpException((int)HttpStatusCode.BadRequest, "Invalid token!");
+            }
+
+            var forgottenPasswordModel = new ForgottenPasswordViewModel
+            {
+                Token = guid
+            };
+
+            return this.View(forgottenPasswordModel);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> ChangePassword(ForgottenPasswordViewModel model)
+        {
+            var user = this.Data.Users.All().FirstOrDefault(x => x.ForgottenPasswordToken == model.Token);
+
+            if (user == null)
+            {
+                throw new HttpException((int)HttpStatusCode.BadRequest, "Invalid token!");
+            }
+
+            if (ModelState.IsValid)
+            {
+                IdentityResult removePassword = await this.UserManager.RemovePasswordAsync(user.Id);
+
+                if (removePassword.Succeeded)
+                {
+                    IdentityResult changePassword = await this.UserManager.AddPasswordAsync(user.Id, model.Password);
+
+                    if (changePassword.Succeeded)
+                    {
+                        user.ForgottenPasswordToken = null;
+                        this.Data.SaveChanges();
+
+                        this.TempData["InfoMessage"] = "Password succefuly changed";
+                        return this.RedirectToAction("Login");
+                    }
+
+                    this.AddErrors(changePassword);
+                }
+
+                this.AddErrors(removePassword);
+            }
+
+            return this.View(model);
+        }
+
+
         #region Helpers
+        
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
-
+        
         private IAuthenticationManager AuthenticationManager
         {
             get
@@ -419,14 +530,14 @@ namespace TwitterCopy.Controllers
                 return HttpContext.GetOwinContext().Authentication;
             }
         }
-
+        
         private async Task SignInAsync(ApplicationUser user, bool isPersistent)
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
             var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
             AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, identity);
         }
-
+        
         private void AddErrors(IdentityResult result)
         {
             foreach (var error in result.Errors)
@@ -434,7 +545,7 @@ namespace TwitterCopy.Controllers
                 ModelState.AddModelError("", error);
             }
         }
-
+        
         private bool HasPassword()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
@@ -444,7 +555,7 @@ namespace TwitterCopy.Controllers
             }
             return false;
         }
-
+        
         public enum ManageMessageId
         {
             ChangePasswordSuccess,
@@ -452,7 +563,7 @@ namespace TwitterCopy.Controllers
             RemoveLoginSuccess,
             Error
         }
-
+        
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
@@ -464,25 +575,26 @@ namespace TwitterCopy.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
-
+        
         private class ChallengeResult : HttpUnauthorizedResult
         {
-            public ChallengeResult(string provider, string redirectUri)
-                : this(provider, redirectUri, null)
+            public ChallengeResult(string provider, string redirectUri) : this(provider, redirectUri, null)
             {
             }
-
+            
             public ChallengeResult(string provider, string redirectUri, string userId)
             {
                 LoginProvider = provider;
                 RedirectUri = redirectUri;
                 UserId = userId;
             }
-
+            
             public string LoginProvider { get; set; }
+            
             public string RedirectUri { get; set; }
+            
             public string UserId { get; set; }
-
+            
             public override void ExecuteResult(ControllerContext context)
             {
                 var properties = new AuthenticationProperties() { RedirectUri = RedirectUri };
@@ -493,6 +605,7 @@ namespace TwitterCopy.Controllers
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
+    
         #endregion
     }
 }

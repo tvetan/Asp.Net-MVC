@@ -1,17 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using Microsoft.AspNet.Identity.EntityFramework;
 using TwitterCopy.Models;
 using TwitterCopy.Models.Contracts;
-using System.Data.Entity.Validation;
-using System.Diagnostics;
 
 namespace TwitterCopy.Data
 {
     public class TwitterCopyDbContext : IdentityDbContext<ApplicationUser>, ITwitterCopyDbContext
     {
-        public TwitterCopyDbContext() 
+        public TwitterCopyDbContext()
             : this("TwitterCopyDb")
         {
         }
@@ -21,9 +22,9 @@ namespace TwitterCopy.Data
         {
         }
 
-        //public IDbSet<UserProfile> UserProfiles { get; set; }
-
         public IDbSet<Tweet> Tweets { get; set; }
+
+        public IDbSet<FeedbackReport> FeedbackReports { get; set; }
 
         public IDbSet<Language> Languages { get; set; }
 
@@ -39,7 +40,7 @@ namespace TwitterCopy.Data
             }
         }
 
-        public IDbSet<T> Set<T>() where T : class
+        public new IDbSet<T> Set<T>() where T : class
         {
             return base.Set<T>();
         }
@@ -58,7 +59,6 @@ namespace TwitterCopy.Data
 
             modelBuilder.Entity<ApplicationUser>().HasMany(u => u.Tweets);
 
-
             //modelBuilder.Entity<ApplicationUser>().HasRequired(x => x.UserProfile)
             //    .WithRequiredPrincipal();
 
@@ -68,6 +68,7 @@ namespace TwitterCopy.Data
         public override int SaveChanges()
         {
             // this.ApplyAuditInfoRules();
+
             try
             {
                 return base.SaveChanges();
@@ -86,7 +87,7 @@ namespace TwitterCopy.Data
             return base.SaveChanges();
         }
 
-        public void ApplyAuditInfoRules()
+        private void ApplyAuditInfoRules()
         {
             // Approach via @julielerman: http://bit.ly/123661P
             foreach (var entry in
@@ -108,6 +109,5 @@ namespace TwitterCopy.Data
                 }
             }
         }
-        //public System.Data.Entity.DbSet<TwitterCopy.Models.SettingsViewModel> SettingsViewModels { get; set; }
     }
 }
