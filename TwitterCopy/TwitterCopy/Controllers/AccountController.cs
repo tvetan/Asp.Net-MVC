@@ -1,46 +1,44 @@
-﻿using System;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.Owin.Security;
-using TwitterCopy.Data;
-using TwitterCopy.Models;
-using TwitterCopy.Models.Account;
-using TwitterCopy.Web.Common;
-using TwitterCopy.Controllers.Base;
-using System.Data.Entity.Validation;
-using System.Diagnostics;
-using System.Collections.Generic;
-using TwitterCopy.Common;
-
-namespace TwitterCopy.Controllers
+﻿namespace TwitterCopy.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Net;
+    using System.Threading.Tasks;
+    using System.Web;
+    using System.Web.Mvc;
+
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Microsoft.Owin.Security;
+
+    using TwitterCopy.Common;
+    using TwitterCopy.Controllers.Base;
+    using TwitterCopy.Data;
+    using TwitterCopy.Models;
+    using TwitterCopy.Models.Account;
+    using TwitterCopy.Web.Common;
+
     public class AccountController : BaseController
     {
-        public AccountController(ITwitterCopyData data) : this(data, new TwitterCopyUserManager<ApplicationUser>(new UserStore<ApplicationUser>(data.Context.DbContext)))
+        public AccountController(ITwitterCopyData data)
+            : this(data, new TwitterCopyUserManager<ApplicationUser>(new UserStore<ApplicationUser>(data.Context.DbContext)))
         {
         }
 
-        public AccountController(ITwitterCopyData data, UserManager<ApplicationUser> userManager) : base(data)
+        public AccountController(ITwitterCopyData data, UserManager<ApplicationUser> userManager)
+            : base(data)
         {
             this.UserManager = userManager;
         }
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
+        [Authorize]
         public ActionResult Settings()
         {
             var user = this.GetLogInUser();
-            if (user == null)
-            {
-                throw new ArgumentNullException("There is no current user");
-            }
 
             SettingsViewModel settingsViewModel = new SettingsViewModel()
             {
@@ -64,7 +62,7 @@ namespace TwitterCopy.Controllers
             var timeZones = this.Data.TimeZones.All();
             settingsViewModel.TimeZones = timeZones;
 
-            return View(settingsViewModel);
+            return this.View(settingsViewModel);
         }
 
         private IList<SelectListItem> CreateSelectList(IEnumerable<Selectable> selectableList)
@@ -103,7 +101,81 @@ namespace TwitterCopy.Controllers
                 return RedirectToAction("Index", "home");
             }
 
-            return View(user);
+            return this.View(user);
+        }
+
+        public ActionResult Profile()
+        {
+            var user = this.GetLogInUser();
+            var userProfile = new UserProfileViewModel()
+            {
+                Id = user.Id,
+                ProfilePictureId = user.ProfilePictureId,
+                Bio = user.Bio,
+                Username = user.UserName,
+                Name = user.FullName,
+                Website = user.WebSite ?? "http://",
+                Location = user.City
+            };
+
+            return this.View(userProfile);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult Profile(UserProfileViewModel model)
+        {
+            if (model.Id != User.Identity.GetUserId())
+            {
+                ModelState.AddModelError(string.Empty, "Not a valid user");
+            }
+
+            if (ModelState.IsValid)
+            {
+                var user = this.GetLogInUser();
+
+                var userProfilePicture = this.ExtractPicture(model.ProfilePicture.InputStream,
+                    model.ProfilePicture.FileName,
+                    model.ProfilePicture.ContentLength,
+                    model.ProfilePicture.ContentType);
+
+                if (model.ProfilePicture != null && user.ProfilePicture != null)
+                {
+                    var oldUserProfilePicture = user.ProfilePicture;
+                    this.Data.Documents.Delete(oldUserProfilePicture);
+                }
+
+                user.ProfilePicture = userProfilePicture;
+                user.Bio = model.Bio;
+                user.City = model.Location;
+                user.WebSite = model.Website;
+                user.FullName = model.Name;
+
+                this.Data.Users.Update(user);
+                this.Data.SaveChanges();
+
+                this.TempData["InfoMessage"] = "Profile was edited succesfully";
+
+                return this.RedirectToAction("index", "home");
+            }
+
+            return this.View(model);
+        }
+
+        private Document ExtractPicture(Stream stream, string name, int size, string type)
+        {
+            byte[] documentBytes = new byte[stream.Length];
+            stream.Read(documentBytes, 0, documentBytes.Length);
+
+            Document fileModel = new Document()
+            {
+                Content = documentBytes,
+                Size = size,
+                Type = type,
+            };
+
+            return fileModel;
         }
 
         //
@@ -112,7 +184,7 @@ namespace TwitterCopy.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return View();
+            return this.View();
         }
 
         //
@@ -139,7 +211,7 @@ namespace TwitterCopy.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            return this.View(model);
         }
 
         //
@@ -147,7 +219,7 @@ namespace TwitterCopy.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            return this.View();
         }
 
         //
@@ -184,7 +256,7 @@ namespace TwitterCopy.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            return this.View(model);
         }
 
         //
@@ -219,7 +291,8 @@ namespace TwitterCopy.Controllers
                                          : "";
             ViewBag.HasLocalPassword = HasPassword();
             ViewBag.ReturnUrl = Url.Action("Manage");
-            return View();
+
+            return this.View();
         }
 
         //
@@ -270,7 +343,7 @@ namespace TwitterCopy.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            return this.View(model);
         }
 
         //
@@ -307,7 +380,8 @@ namespace TwitterCopy.Controllers
                 // If the user does not have an account, then prompt the user to create an account
                 ViewBag.ReturnUrl = returnUrl;
                 ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { UserName = loginInfo.DefaultUserName });
+
+                return this.View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { UserName = loginInfo.DefaultUserName });
             }
         }
 
@@ -330,11 +404,13 @@ namespace TwitterCopy.Controllers
             {
                 return RedirectToAction("Manage", new { Message = ManageMessageId.Error });
             }
+
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             if (result.Succeeded)
             {
                 return RedirectToAction("Manage");
             }
+
             return RedirectToAction("Manage", new { Message = ManageMessageId.Error });
         }
 
@@ -358,6 +434,7 @@ namespace TwitterCopy.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
+
                 var user = new ApplicationUser() { UserName = model.UserName };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
@@ -369,11 +446,13 @@ namespace TwitterCopy.Controllers
                         return RedirectToLocal(returnUrl);
                     }
                 }
+
                 AddErrors(result);
             }
 
             ViewBag.ReturnUrl = returnUrl;
-            return View(model);
+
+            return this.View(model);
         }
 
         //
@@ -409,6 +488,7 @@ namespace TwitterCopy.Controllers
                 this.UserManager.Dispose();
                 this.UserManager = null;
             }
+
             base.Dispose(disposing);
         }
 
@@ -453,10 +533,8 @@ namespace TwitterCopy.Controllers
             var forgottenPasswordEmailBody = string.Format("Click the link to restore password <a href='{0}'>{0}</a>",
                 Url.Action("ChangePassword", "Account", new { token = user.ForgottenPasswordToken }, Request.Url.Scheme));
 
-
             mailSender.SendMail(user.Email, forgottenPasswordEmailTitle, forgottenPasswordEmailBody);
         }
-
 
         public ActionResult ChangePassword(string token)
         {
@@ -517,12 +595,11 @@ namespace TwitterCopy.Controllers
             return this.View(model);
         }
 
-
         #region Helpers
-        
+
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
-        
+
         private IAuthenticationManager AuthenticationManager
         {
             get
@@ -530,14 +607,14 @@ namespace TwitterCopy.Controllers
                 return HttpContext.GetOwinContext().Authentication;
             }
         }
-        
+
         private async Task SignInAsync(ApplicationUser user, bool isPersistent)
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
             var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
             AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, identity);
         }
-        
+
         private void AddErrors(IdentityResult result)
         {
             foreach (var error in result.Errors)
@@ -545,7 +622,7 @@ namespace TwitterCopy.Controllers
                 ModelState.AddModelError("", error);
             }
         }
-        
+
         private bool HasPassword()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
@@ -553,9 +630,10 @@ namespace TwitterCopy.Controllers
             {
                 return user.PasswordHash != null;
             }
+
             return false;
         }
-        
+
         public enum ManageMessageId
         {
             ChangePasswordSuccess,
@@ -563,7 +641,7 @@ namespace TwitterCopy.Controllers
             RemoveLoginSuccess,
             Error
         }
-        
+
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
@@ -575,26 +653,27 @@ namespace TwitterCopy.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
-        
+
         private class ChallengeResult : HttpUnauthorizedResult
         {
-            public ChallengeResult(string provider, string redirectUri) : this(provider, redirectUri, null)
+            public ChallengeResult(string provider, string redirectUri)
+                : this(provider, redirectUri, null)
             {
             }
-            
+
             public ChallengeResult(string provider, string redirectUri, string userId)
             {
                 LoginProvider = provider;
                 RedirectUri = redirectUri;
                 UserId = userId;
             }
-            
+
             public string LoginProvider { get; set; }
-            
+
             public string RedirectUri { get; set; }
-            
+
             public string UserId { get; set; }
-            
+
             public override void ExecuteResult(ControllerContext context)
             {
                 var properties = new AuthenticationProperties() { RedirectUri = RedirectUri };
@@ -602,10 +681,11 @@ namespace TwitterCopy.Controllers
                 {
                     properties.Dictionary[XsrfKey] = UserId;
                 }
+
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
-    
+
         #endregion
     }
 }

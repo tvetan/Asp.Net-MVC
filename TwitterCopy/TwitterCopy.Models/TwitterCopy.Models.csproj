@@ -39,6 +39,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +54,9 @@
     <Compile Include="Contracts\ISelectable.cs" />
     <Compile Include="Contracts\IUsers.cs" />
     <Compile Include="Country.cs" />
+    <Compile Include="DataAnnotations\FileSizeAttribute.cs" />
+    <Compile Include="DataAnnotations\FileTypesAttribute.cs" />
+    <Compile Include="Document.cs" />
     <Compile Include="FeedbackReport.cs" />
     <Compile Include="FeedbackReportType.cs" />
     <Compile Include="Language.cs" />

@@ -6,20 +6,25 @@
     ViewBag.Title = "Settings";
 }
 
-
 @section NavLinks{
     <div class="module">
         <ul class="nav nav-pills nav-stacked">
-            <li class ="active">
+            <li class="active">
                 @Html.ActionLink("Account", "Settings", "Account")
             </li>
             <li>
-               @Html.ActionLink("Password", "Manage", "Account")
+                @Html.ActionLink("Password", "Manage", "Account")
             </li>
-            <li >
+            <li>
                 @Html.ActionLink("Profile", "Profile", "Account")
             </li>
         </ul>
+    </div>
+}
+
+@section MiniProfile{
+    <div class="module">
+        @Html.Partial("_AccountSummary")
     </div>
 }
 
@@ -43,6 +48,8 @@
                         @Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.UserName)
+
+                           <p class="username"> @Url.Action("Index", "User", new { username = User.Identity.Name }, "https")</p>
                             @Html.ValidationMessageFor(model => model.UserName)
                         </div>
                     </div>
@@ -92,8 +99,6 @@
     </div>
 }
 
-@section MiniProfile{
-    <div class="module">
-        @Html.Partial("_AccountSummary")
-    </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }

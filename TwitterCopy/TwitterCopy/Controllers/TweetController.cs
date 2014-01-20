@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using TwitterCopy.Controllers.Base;
-using TwitterCopy.Data;
-using TwitterCopy.Models;
-using Microsoft.AspNet.Identity;
-
-namespace TwitterCopy.Controllers
+﻿namespace TwitterCopy.Controllers
 {
+    using System;
+    using System.Web.Mvc;
+
+    using Microsoft.AspNet.Identity;
+
+    using TwitterCopy.Controllers.Base;
+    using TwitterCopy.Data;
+    using TwitterCopy.Models;
+
     public class TweetController : BaseController
     {
         public TweetController(ITwitterCopyData data)
@@ -19,7 +18,7 @@ namespace TwitterCopy.Controllers
 
         public ActionResult Index()
         {
-            return RedirectToAction("Index");
+            return this.RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -36,7 +35,7 @@ namespace TwitterCopy.Controllers
                 this.Data.SaveChanges();
             }
 
-           return RedirectToAction("Index", "Home");
+           return this.RedirectToAction("Index", "Home");
         }
 
         [ChildActionOnly]
@@ -47,7 +46,7 @@ namespace TwitterCopy.Controllers
             var user = GetLogInUser();
             var tweets = this.Data.Tweets.GetByUser(user);
 
-            return PartialView("_TweetsList", tweets);
+            return this.PartialView("_TweetsList", tweets);
         }
     }
 }

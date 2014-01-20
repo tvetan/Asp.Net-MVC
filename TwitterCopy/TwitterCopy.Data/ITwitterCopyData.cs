@@ -20,6 +20,8 @@
 
         IRepository<Country> Countries { get; }
 
+        IRepository<Document> Documents { get; }
+
         IDeletableEntityRepository<FeedbackReport> FeedbackReports { get; }
 
         int SaveChanges();

@@ -9,9 +9,9 @@
 
     <div class="col-md-4 sidebar">
 
-        @RenderSection("NavLinks", false)
-
         @RenderSection("MiniProfile", false)
+
+        @RenderSection("NavLinks", false)
 
         @RenderSection("TweetToUser", false)
 
@@ -64,7 +64,9 @@
         @RenderSection("ListItems", false)
     </div>
 </div>
+
 @RenderBody()
+
 @section Scripts{
     @RenderSection("Scripts", false)
     <script>

@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using TwitterCopy.Data.Repositories;
-using TwitterCopy.Data.Repositories.Base;
-using TwitterCopy.Data.Repositories.Contracts;
-using TwitterCopy.Models;
-using TwitterCopy.Models.Contracts;
-
-namespace TwitterCopy.Data
+﻿namespace TwitterCopy.Data
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using TwitterCopy.Data.Repositories;
+    using TwitterCopy.Data.Repositories.Base;
+    using TwitterCopy.Data.Repositories.Contracts;
+    using TwitterCopy.Models;
+    using TwitterCopy.Models.Contracts;
+
     public class TwitterCopyData : ITwitterCopyData
     {
-
         private readonly TwitterCopyDbContext context;
 
         private readonly Dictionary<Type, object> repositories = new Dictionary<Type, object>();
@@ -26,7 +26,6 @@ namespace TwitterCopy.Data
             this.context = context;
         }
 
-
         public IRepository<Language> Languages
         {
             get
@@ -39,7 +38,6 @@ namespace TwitterCopy.Data
         {
             get
             {
-                
                 return this.GetRepository<TwitterCopy.Models.TimeZone>();
             }
         }
@@ -49,6 +47,14 @@ namespace TwitterCopy.Data
             get
             {
                 return this.GetRepository<Country>();
+            }
+        }
+
+        public IRepository<Document> Documents
+        {
+            get
+            {
+                return this.GetRepository<Document>();
             }
         }
 

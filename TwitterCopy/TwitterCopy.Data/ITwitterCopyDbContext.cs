@@ -15,6 +15,8 @@ namespace TwitterCopy.Data
 
         IDbSet<TwitterCopy.Models.TimeZone> TimeZones { get; set; }
 
+        IDbSet<Document> Documents { get; set; }
+
         IDbSet<Country> Countries { get; set; }
 
         DbContext DbContext { get; }

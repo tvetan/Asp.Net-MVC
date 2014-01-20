@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
@@ -21,6 +22,12 @@ namespace TwitterCopy.Controllers
         public ActionResult Index()
         {
             var user = GetLogInUser();
+
+            if (user == null)
+            {
+                throw new HttpException((int)HttpStatusCode.Unauthorized, "User is not loged in");
+            }
+
             return View(user);
         }
 

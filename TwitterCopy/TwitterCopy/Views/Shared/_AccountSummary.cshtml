@@ -1,6 +1,13 @@
-﻿<div class="mini-profile">
-    <a href="@Url.Action("index", "user", new { username = Model.UserName })" class="account-summary-small">
-        <b class="fullname">@Model.UserName</b>
-        <small class="metadata">View my profile page</small>
-    </a>
+﻿
+<div class="profile-outer">
+    <div class="mini-profile">
+        <a href="@Url.Action("index", "user", new { username = Model.UserName })" class="account-summary-small">
+            <img src="@Url.Action("UploadProfilePicture", "User", new { username = Model.UserName })" class="profile-picture size32" alt="Profile Picture" />
+
+            <div class="profile-information">
+                <b class="fullname">@Model.UserName</b>
+                <small class="metadata">View my profile page</small>
+            </div>
+        </a>
+    </div>
 </div>

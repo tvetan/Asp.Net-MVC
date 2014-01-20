@@ -1,8 +1,12 @@
-﻿@using TwitterCopy.Models;
-@using Microsoft.AspNet.Identity;
-@{
+﻿@{
     ViewBag.Title = "Change Password";
 }
+
+@*@section MiniProfile{
+    <div class="module">
+        @Html.Partial("_AccountSummary")
+    </div>
+}*@
 
 @section ListItems{
     <div class="module">
@@ -10,7 +14,6 @@
             <h2>Password</h2>
             <p class="subheader">Change your password or recover your current one.</p>
 
-            @*<p class="text-success">@ViewBag.StatusMessage</p>*@
             <div class="row">
                 <div class="col-md-12">
                     @if (ViewBag.HasLocalPassword)

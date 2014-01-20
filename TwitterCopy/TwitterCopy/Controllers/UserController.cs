@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using TwitterCopy.Controllers.Base;
-using TwitterCopy.Data;
-using TwitterCopy.Models;
-
-namespace TwitterCopy.Controllers
+﻿namespace TwitterCopy.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net;
+    using System.Web;
+    using System.Web.Mvc;
+
+    using TwitterCopy.Controllers.Base;
+    using TwitterCopy.Data;
+    using TwitterCopy.Models;
+
     public class UserController : BaseController
     {
         private const string FollowersHeader = "Followers";
@@ -20,7 +21,6 @@ namespace TwitterCopy.Controllers
         {
         }
 
-        // GET: /User/
         public ActionResult Index(string username)
         {
             ApplicationUser user = this.GetUserByUserNameOrLogInUser(username);
@@ -30,33 +30,54 @@ namespace TwitterCopy.Controllers
                 throw new HttpException((int)HttpStatusCode.NotFound, "Username was not found");
             }
 
-            return View(user);
-        }
-  
-        private ApplicationUser GetUserByUserNameOrLogInUser(string username)
-        {
-            ApplicationUser user;
-            if (username != null)
-            {
-                user = this.Data.Users.GetByUsername(username);
-            }
-            else
-            {
-                user = this.GetLogInUser();
-            }
-
-            return user;
+            return this.View(user);
         }
 
         public ActionResult RandomUsers()
         {
             var logInUser = this.GetLogInUser();
             var filteredUsers = this.Data.Users.GetUsersWithoutCurrentUsersAndHisFollowings(logInUser);
-               // .All().Where(user => user.Id != logInUser.Id && !followingsIds.Contains(user.Id));
 
             IEnumerable<ApplicationUser> randomUsers = this.GetRandomUsers(filteredUsers.ToList());
 
-            return PartialView("_ListRandomUsers", randomUsers);
+            return this.PartialView("_ListRandomUsers", randomUsers);
+        }
+
+        public ActionResult Suggestions()
+        {
+            var logInUser = this.GetLogInUser();
+            var users = this.Data.Users
+                .GetUsersWithoutCurrentUsersAndHisFollowings(logInUser).OrderBy(user => user.Followers.Count);
+
+            return this.View(users);
+        }
+
+        public ActionResult UploadProfilePicture(string username)
+        {
+            var user = this.Data.Users.GetByUsername(username);
+
+            return File(user.ProfilePicture.Content, user.ProfilePicture.Type);
+        }
+
+        [ChildActionOnly]
+        public ActionResult ListFollowings()
+        {
+            var logInUser = this.GetLogInUser();
+            var users = logInUser.Followings;
+
+            ViewBag.headerText = FollowingHeader;
+
+            return this.PartialView("_UsersListPartial", users.ToList());
+        }
+
+        [ChildActionOnly]
+        public ActionResult ListFollowers()
+        {
+            var logInUser = this.GetLogInUser();
+            var users = logInUser.Followers;
+            ViewBag.headerText = FollowersHeader;
+
+            return this.PartialView("_UsersListPartial", users.ToList());
         }
 
         private IEnumerable<ApplicationUser> GetRandomUsers(IList<ApplicationUser> users)
@@ -77,33 +98,19 @@ namespace TwitterCopy.Controllers
             return randomUsers;
         }
 
-        public ActionResult Suggestions()
+        private ApplicationUser GetUserByUserNameOrLogInUser(string username)
         {
-            var logInUser = this.GetLogInUser();
-            var users = this.Data.Users
-                .GetUsersWithoutCurrentUsersAndHisFollowings(logInUser).OrderBy(user => user.Followers.Count);
+            ApplicationUser user;
+            if (username != null)
+            {
+                user = this.Data.Users.GetByUsername(username);
+            }
+            else
+            {
+                user = this.GetLogInUser();
+            }
 
-            return View(users);
-        }
-
-        [ChildActionOnly]
-        public ActionResult ListFollowings()
-        {
-            var logInUser = this.GetLogInUser();
-            var users = logInUser.Followings;
-            ViewBag.headerText = FollowingHeader;
-
-            return PartialView("_UsersListPartial", users.ToList());
-        }
-
-        [ChildActionOnly]
-        public ActionResult ListFollowers()
-        {
-            var logInUser = this.GetLogInUser();
-            var users = logInUser.Followers;
-            ViewBag.headerText = FollowersHeader;
-
-            return PartialView("_UsersListPartial", users.ToList());
+            return user;
         }
     }
 }

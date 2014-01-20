@@ -252,8 +252,13 @@ input[type="email"]{
     align-content: center;
 }
 
+.profile-outer{
+    padding: 15px;
+    padding-bottom: 20px;
+}
+
 .mini-profile {
-    padding: 5px;
+    position: relative;
 }
 
     .mini-profile .fullname {
@@ -261,6 +266,17 @@ input[type="email"]{
         font-size: 14px;
         color: #333;
     }
+
+    .mini-profile .profile-picture{
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 3px;
+    }
+
+.profile-information{
+    margin-left: 40px;
+}
 
 .account-summary-small:hover {
     text-decoration: none;
@@ -511,4 +527,16 @@ input[type=text]:focus, textarea:focus, div[contenteditable="true"]:focus, div[c
     width: 280px;
     padding: 5px;
     line-height: 18px;
+}
+
+.size32{
+    width: 32px;
+    height: 32px;
+    border-radius: 5px;
+}
+
+.size73{
+    width: 73px;
+    height: 73px;
+    border-radius: 5px;
 }

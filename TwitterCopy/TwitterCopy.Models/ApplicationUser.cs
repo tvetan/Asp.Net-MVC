@@ -3,11 +3,10 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
+
     using Microsoft.AspNet.Identity.EntityFramework;
+
     using TwitterCopy.Models.Contracts;
-    using System.ComponentModel;
 
     public class ApplicationUser : IdentityUser, IAuditInfo
     {
@@ -22,7 +21,6 @@
             this.tweets = new HashSet<Tweet>();
             this.followers = new HashSet<ApplicationUser>();
             this.followings = new HashSet<ApplicationUser>();
-            //this.UserProfile = new UserProfile();
             this.CreatedOn = DateTime.Now;
         }
 
@@ -34,9 +32,11 @@
 
         public string FullName { get; set; }
 
-        //public int? UserProfileId { get; set; }
+        public string Bio { get; set; }
 
-        //public virtual UserProfile UserProfile { get; set; }
+        public int? ProfilePictureId { get; set; }
+
+        public virtual Document ProfilePicture { get; set; }
 
         public virtual ICollection<Tweet> Tweets
         {

@@ -28,6 +28,8 @@ namespace TwitterCopy.Data
 
         public IDbSet<Language> Languages { get; set; }
 
+        public IDbSet<Document> Documents { get; set; }
+
         public IDbSet<TwitterCopy.Models.TimeZone> TimeZones { get; set; }
 
         public IDbSet<Country> Countries { get; set; }
