@@ -4,6 +4,7 @@
     using System.Web.Mvc;
     using System.Web.Optimization;
     using System.Web.Routing;
+
     using TwitterCopy.Data;
     using TwitterCopy.Data.Migrations;
 
@@ -11,6 +12,9 @@
     {
         protected void Application_Start()
         {
+            ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(new RazorViewEngine());
+
             Database.SetInitializer(
                 new MigrateDatabaseToLatestVersion<TwitterCopyDbContext, Configuration>());
 

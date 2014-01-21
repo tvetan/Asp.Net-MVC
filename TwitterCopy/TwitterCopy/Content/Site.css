@@ -523,7 +523,7 @@ input[type=text]:focus, textarea:focus, div[contenteditable="true"]:focus, div[c
     font-weight: bolder;
 }
 
-.feedback-module .feedback-description{
+.feedback-description{
     width: 280px;
     padding: 5px;
     line-height: 18px;
