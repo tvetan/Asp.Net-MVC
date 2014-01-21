@@ -404,12 +404,16 @@ input[type=text]:focus, textarea:focus, div[contenteditable="true"]:focus, div[c
     line-height: 20px;
 }
 
-.tweetTextArea:focus{
+.tweetTextArea-open{
     height: 100px;
 }
 
 .tweet-counter{
     margin-left: 10px;
+}
+
+.tweet-button:hover{
+    background-color: #0084B4;
 }
 
 .stats{
