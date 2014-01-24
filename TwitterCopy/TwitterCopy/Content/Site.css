@@ -299,7 +299,6 @@ h2 {
     line-height: 20px;
 }
 
-
 .list-item {
     padding: 12px;
     padding-left: 20px;
@@ -309,6 +308,14 @@ h2 {
     .list-item:hover {
         background-color: #f5f5f5;
     }
+
+.list-item .profile-picture{
+    float: left;
+}
+
+.list-item-inner{
+    margin-left: 60px;
+}
 
 .tweet .time {
     float: right;
@@ -536,6 +543,12 @@ input[type=text]:focus, textarea:focus, div[contenteditable="true"]:focus, div[c
 .size32{
     width: 32px;
     height: 32px;
+    border-radius: 5px;
+}
+
+.size48{
+    width: 48px;
+    height: 48px;
     border-radius: 5px;
 }
 

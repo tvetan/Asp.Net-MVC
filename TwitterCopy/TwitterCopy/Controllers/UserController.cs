@@ -15,9 +15,11 @@
     {
         private const string FollowersHeader = "Followers";
         private const string FollowingHeader = "Followings";
+        private const string DefaultPictureContentType = "image/png";
         private readonly Random random = new Random();
 
-        public UserController(ITwitterCopyData data) : base(data)
+        public UserController(ITwitterCopyData data) 
+            : base(data)
         {
         }
 
@@ -56,7 +58,12 @@
         {
             var user = this.Data.Users.GetByUsername(username);
 
-            return File(user.ProfilePicture.Content, user.ProfilePicture.Type);
+            if (user.ProfilePicture != null)
+            {
+                return File(user.ProfilePicture.Content, user.ProfilePicture.Type);
+            }
+
+            return File(Url.Content("~/Content/default_profile.png"), DefaultPictureContentType);
         }
 
         [ChildActionOnly]

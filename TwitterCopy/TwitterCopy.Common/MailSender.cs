@@ -14,7 +14,7 @@
         private const string ServerAddress = "smtp.gmail.com";
         private const int ServerPort = 587;
 
-        private static readonly object SyncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         private static MailSender instance;
         private readonly SmtpClient mailClient;
@@ -42,7 +42,7 @@
             {
                 if (instance == null)
                 {
-                    lock (SyncRoot)
+                    lock (syncRoot)
                     {
                         if (instance == null)
                         {

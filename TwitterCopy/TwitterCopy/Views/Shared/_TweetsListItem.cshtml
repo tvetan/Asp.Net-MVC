@@ -3,7 +3,9 @@
 @model TwitterCopy.Models.Tweet
 
 <div class="content list-item tweet">
-
+    @*<img src="@Url.Action("UploadProfilePicture", "User", new { username = Model.Author.UserName })" class="profile-picture size48" />*@
+    @Html.GenerateProfilePicture(Model.Author.UserName, new { @class="profile-picture size48" })
+    <div class="list-item-inner">
         <a href="@Url.Action("index", "user", new { username = Model.Author.UserName })" class="account-summary-small profile-link">
             <strong class="fullname-tweet">
                 @Model.Author.UserName
@@ -11,12 +13,11 @@
             <small class="metadata">
                 @@@Model.Author.UserName
             </small>
-
-
         </a>
         <b class="time">
             @Model.FormatTimeSinceCreated()
         </b>
 
         <p>@Html.DisplayWithLinks(Model.Status)</p>
+    </div>
 </div>

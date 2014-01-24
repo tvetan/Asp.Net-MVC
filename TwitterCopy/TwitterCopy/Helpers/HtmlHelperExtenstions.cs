@@ -7,6 +7,27 @@
 
     public static class HtmlHelperExtenstions
     {
+        public static MvcHtmlString GenerateProfilePicture(this HtmlHelper html, string username)
+        {
+            return GenerateProfilePicture(html, username, null);
+        }
+
+        public static MvcHtmlString GenerateProfilePicture(this HtmlHelper html, string username, object attributes)
+        {
+            var builder = new TagBuilder("img");
+
+            var urlHelper = new UrlHelper(html.ViewContext.RequestContext);
+
+            builder.MergeAttribute("src", urlHelper.Action("UploadProfilePicture", "User", new { username = username })); // "/User/UploadProfilePicture?username=" + username);
+            if (attributes != null)
+            {
+                var atts = HtmlHelper.AnonymousObjectToHtmlAttributes(attributes);
+                builder.MergeAttributes(atts);
+            }
+            
+            return MvcHtmlString.Create(builder.ToString());
+        }
+
         public static MvcHtmlString DisplayWithLinks(this HtmlHelper htmlHelper, string content)
         {
             StringBuilder contentWithLinks = new StringBuilder();

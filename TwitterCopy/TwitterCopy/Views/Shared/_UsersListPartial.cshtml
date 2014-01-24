@@ -2,15 +2,15 @@
 @using Microsoft.AspNet.Identity;
 @model IEnumerable<TwitterCopy.Models.ApplicationUser>
 
-<div>
-    <h3>@ViewBag.headerText</h3>
+<div class="content-header">
+    <h2>@ViewBag.headerText</h2>
 </div>
 
 
     @foreach (var user in Model)
     {
         <div class="content row list-item">
-            <div class="col-lg-8">
+            @*<div class="col-lg-8">
                 <a href="#" class="account-summary">
                     <span class="profile">
                         <b>
@@ -21,8 +21,9 @@
                         </small>
                     </span>
                 </a>
-            </div>
-            <div class="col-lg-4">
+            </div>*@
+
+            <div class="pull-right">
                 @if (user.DoesUserContainFollower(User.Identity.GetUserId()))
                 {
                     <a href="@Url.RouteUrl("Unfollow", new { id = user.Id })" class="btn following-unfollow-btn btn-primary">
@@ -40,6 +41,19 @@
                         @Html.RouteLink("Follow", "Follow", new { id = user.Id }, new { @class = "btn btn-follow" })
                     </div>
                 }
+            </div>
+            @Html.GenerateProfilePicture(user.UserName, new { @class = "profile-picture size48" })
+            @*<img src="@Url.Action("UploadProfilePicture", "User", new { username = user.UserName })" class="profile-picture size48" alt="User Profile picture" />*@
+            <div class="list-item-inner">
+                <a href="@Url.Action("index", "user", new { username = user.UserName })" class="account-summary-small profile-link">
+                    <strong class="fullname-tweet">
+                        @user.UserName
+                    </strong>
+                    <small class="metadata">
+                        @@@user.UserName
+                    </small>
+                </a>
+                <p>@user.Bio</p>
             </div>
         </div>
     }

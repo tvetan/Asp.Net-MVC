@@ -50,7 +50,7 @@
 @section ListItems {
 
     <div class="module row">
-        @Html.Action("listTweets", "tweet")
+        @Html.Action("listTweets", "tweet", new { getFallowingsTweets = true })
     </div>
 
 }

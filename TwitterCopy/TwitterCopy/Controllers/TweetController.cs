@@ -2,12 +2,14 @@
 {
     using System;
     using System.Web.Mvc;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using Microsoft.AspNet.Identity;
 
     using TwitterCopy.Controllers.Base;
     using TwitterCopy.Data;
     using TwitterCopy.Models;
+    
 
     public class TweetController : BaseController
     {
@@ -31,6 +33,7 @@
                 tweet.Status = model.Status;
                 tweet.CreatedOn = DateTime.Now;
                 tweet.AuthorId = User.Identity.GetUserId();
+
                 this.Data.Context.Tweets.Add(tweet);
                 this.Data.SaveChanges();
             }
@@ -41,12 +44,21 @@
         [ChildActionOnly]
         [HttpGet]
         [ActionName("ListTweets")]
-        public ActionResult ListTweets()
+        public ActionResult ListTweets(bool getFallowingsTweets = false)
         {
-            var user = GetLogInUser();
+            var user = this.GetLogInUser();
             var tweets = this.Data.Tweets.GetByUser(user);
 
-            return this.PartialView("_TweetsList", tweets);
+            if (getFallowingsTweets)
+	        {
+                var fallowingsTweets = user.Followings.AsQueryable().SelectMany(x => x.Tweets);
+
+               tweets = fallowingsTweets.Union(tweets);
+	        }
+
+            tweets = tweets.OrderByDescending(x => x.CreatedOn);
+
+            return this.PartialView("_TweetsList", tweets.ToList());
         }
     }
 }
