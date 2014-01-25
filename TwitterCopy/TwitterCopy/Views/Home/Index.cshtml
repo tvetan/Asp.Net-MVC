@@ -10,7 +10,7 @@
 @section  MiniProfile {
     <div class="module">
         @Html.Partial("_AccountSummary")
-        <div class="row">
+        <div class="row profile-stats">
             <ul class="nav navbar-nav stats">
                 <li>
                     <a href="@Url.Action("index", User.Identity.GetUserName())">
@@ -50,7 +50,7 @@
 @section ListItems {
 
     <div class="module row">
-        @Html.Action("listTweets", "tweet", new { getFallowingsTweets = true })
+        @Html.Action("listTweets", "tweet", new { getFallowingsTweets = true, username = Model.UserName })
     </div>
 
 }

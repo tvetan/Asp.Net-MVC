@@ -2,7 +2,7 @@
 
 @model TwitterCopy.Models.Tweet
 
-<div class="content list-item tweet">
+<div class="list-item tweet">
     @*<img src="@Url.Action("UploadProfilePicture", "User", new { username = Model.Author.UserName })" class="profile-picture size48" />*@
     @Html.GenerateProfilePicture(Model.Author.UserName, new { @class="profile-picture size48" })
     <div class="list-item-inner">

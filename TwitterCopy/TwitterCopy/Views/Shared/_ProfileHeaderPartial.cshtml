@@ -1,19 +1,40 @@
 ﻿@using Microsoft.AspNet.Identity;
 @model TwitterCopy.Models.ApplicationUser
 
-<div class="module profile-card">
-    <div class="profile-header">
-        <div class="profile-card-inner">
-            <h1 class="fullname">
-                @Model.UserName
+<div class="profile-card">
+    <div class="profile-card-header">
+        <div class="profile-card-header-inner">
+
+            <div class="profile-picture" data-target="#profile-picture-modal" data-toggle="modal">
+                @Html.GenerateProfilePicture(Model.UserName, new { @class = "size73" })
+            </div>
+
+            <h1>
+                @@@Model.UserName
             </h1>
             <h2 class="username">
-                @@@Model.UserName
+                @if (Model.FullName != null)
+	            {
+		           <span>@Model.FullName</span>
+	            }
             </h2>
+            <p class="bio">
+                @Model.Bio
+            </p>
+        </div>
+
+        <div id="profile-picture-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <h3 class="modal-title">@@@(Model.UserName)'s profile photo</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                @Html.GenerateProfilePicture(Model.UserName, new { @class = "size140" })
+            </div>
         </div>
     </div>
 
-    <div class="profile-card-footer">
+    <div class="profile-card-footer container">
         <ul class="nav navbar-nav">
             <li>
                 <a href="@Url.Action("index", User.Identity.GetUserName())">
@@ -34,6 +55,8 @@
                 </a>
             </li>
         </ul>
-        <a class="btn edit-profile-btn js-nav inline-edit-profile-btn" href="/settings/profile" data-scribe-element="profile_edit_button">Edit profile</a>
+        <div class="edit-profile pull-right">
+            <a class="btn btn-default  edit-profile-btn js-nav inline-edit-profile-btn" href="@Url.Action("Profile", "Account")" data-scribe-element="profile_edit_button">Edit profile</a>
+        </div>
     </div>
 </div>

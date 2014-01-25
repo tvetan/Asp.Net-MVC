@@ -26,8 +26,12 @@
 @if (User.Identity.GetUserId() != Model.Id)
 {
     @section TweetToUser{
-        <p>Tweet to @Model.UserName</p>
-        @Html.Partial("_CreateTweetForm", new CreateTweetViewModel())
+        <div class="module">
+            <div class="module-inner">
+                <p><strong>Tweet to @Model.UserName</strong></p>
+                @Html.Partial("_CreateTweetForm", new CreateTweetViewModel())
+            </div>
+        </div>
     }
 }
 
@@ -40,9 +44,7 @@
 }
 
 @section ProfileHeader{
-    <div class="module">
-        @Html.Partial("_ProfileHeaderPartial", Model)
-    </div>
+    @Html.Partial("_ProfileHeaderPartial", Model)
 }
 
 @section ListItems{
@@ -59,7 +61,6 @@
             });
 
             $("#tweetTextArea").val("@@" + "@Model.UserName ");
-            // $('#tweetTextArea').append(@Model.UserName);
         });
     </script>
 }

@@ -2,11 +2,12 @@
 
     function init() {
         $("#create-tweet .tweet").attr({ disabled: "disabled" });
-
+        var tweetTextAreaIniationTextLength = $("#tweetTextArea").val().length;
         $("#tweetTextArea").on("blur focus", function (event) {
+            
             $this = $(this)
             var statusTextLength = $this.val().length;
-            if (statusTextLength === 0) {
+            if (statusTextLength === tweetTextAreaIniationTextLength) {
                 $(this).toggleClass("tweetTextArea-open");
             }
         });
@@ -15,7 +16,7 @@
         $("#tweetTextArea").on("keyup keypress", function () {
             $this = $(this);
             var statusTextLength = 140 - $this.val().length;
-            if (statusTextLength < 140 && statusTextLength >= 0) {
+            if (statusTextLength < 140 && statusTextLength >= tweetTextAreaIniationTextLength) {
                 $("#create-tweet .tweet-button").removeAttr("disabled");
             }
             else {

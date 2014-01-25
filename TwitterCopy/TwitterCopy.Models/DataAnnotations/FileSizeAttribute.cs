@@ -16,7 +16,7 @@
         {
             if (value == null)
             {
-                return false;
+                return true;
             }
 
             return (value as HttpPostedFileBase).ContentLength <= this.maxSize;

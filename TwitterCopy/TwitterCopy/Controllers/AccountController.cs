@@ -135,18 +135,21 @@
             {
                 var user = this.GetLogInUser();
 
-                var userProfilePicture = this.ExtractPicture(model.ProfilePicture.InputStream,
+                if (model.ProfilePicture != null)
+                {
+                    var userProfilePicture = this.ExtractPicture(model.ProfilePicture.InputStream,
                     model.ProfilePicture.FileName,
                     model.ProfilePicture.ContentLength,
                     model.ProfilePicture.ContentType);
+                    if (user.ProfilePicture != null)
+                    {
+                        var oldUserProfilePicture = user.ProfilePicture;
+                        this.Data.Documents.Delete(oldUserProfilePicture);
+                    }
 
-                if (model.ProfilePicture != null && user.ProfilePicture != null)
-                {
-                    var oldUserProfilePicture = user.ProfilePicture;
-                    this.Data.Documents.Delete(oldUserProfilePicture);
+                    user.ProfilePicture = userProfilePicture;
                 }
 
-                user.ProfilePicture = userProfilePicture;
                 user.Bio = model.Bio;
                 user.City = model.Location;
                 user.WebSite = model.Website;

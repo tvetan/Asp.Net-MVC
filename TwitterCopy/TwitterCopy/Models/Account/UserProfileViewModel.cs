@@ -19,7 +19,7 @@
 
         [FileSize(240240)]
         [FileTypes("jpg, jpeg, png")]
-        [Required(ErrorMessage = "File is required")]
+        //[Required(ErrorMessage = "File is required")]
         public HttpPostedFileBase ProfilePicture { get; set; }
 
         [UIHint("MultilineText")]

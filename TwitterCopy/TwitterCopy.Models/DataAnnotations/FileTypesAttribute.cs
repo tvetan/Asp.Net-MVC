@@ -20,7 +20,7 @@
         {
             if (value == null)
             {
-                return false;
+                return true;
             }
 
             var fileExtension = Path.GetExtension((value as HttpPostedFileBase).FileName).Substring(1);

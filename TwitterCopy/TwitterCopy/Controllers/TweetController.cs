@@ -2,13 +2,14 @@
 {
     using System;
     using System.Web.Mvc;
-    using System.Collections.Generic;
     using System.Linq;
     using Microsoft.AspNet.Identity;
 
     using TwitterCopy.Controllers.Base;
     using TwitterCopy.Data;
     using TwitterCopy.Models;
+    using System.Net;
+    using System.Web;
     
 
     public class TweetController : BaseController
@@ -44,16 +45,21 @@
         [ChildActionOnly]
         [HttpGet]
         [ActionName("ListTweets")]
-        public ActionResult ListTweets(bool getFallowingsTweets = false)
+        public ActionResult ListTweets(string username, bool getFallowingsTweets = false)
         {
-            var user = this.GetLogInUser();
+            var user = this.Data.Users.GetByUsername(username);
+
+            if (user == null)
+            {
+                throw new HttpException((int)HttpStatusCode.NotFound, "User is not found");
+            }
+
             var tweets = this.Data.Tweets.GetByUser(user);
 
             if (getFallowingsTweets)
 	        {
                 var fallowingsTweets = user.Followings.AsQueryable().SelectMany(x => x.Tweets);
-
-               tweets = fallowingsTweets.Union(tweets);
+                tweets = fallowingsTweets.Union(tweets);
 	        }
 
             tweets = tweets.OrderByDescending(x => x.CreatedOn);
