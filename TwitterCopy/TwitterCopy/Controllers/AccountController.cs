@@ -77,6 +77,12 @@
             return items;
         }
 
+
+        public ActionResult LoginRegister()
+        {
+            return this.View();
+        }
+
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]

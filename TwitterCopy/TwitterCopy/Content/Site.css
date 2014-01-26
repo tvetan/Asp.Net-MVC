@@ -675,3 +675,70 @@ input[type=text], textarea {
     font-size: 12px;
     font-family: Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif
 }
+
+
+/* Front Page */
+
+.front-page-container{
+    width: 960px;
+    margin: 50px auto;
+}
+
+.front-page-container .front-welcome{
+    width: 480px;
+    height: 388px;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+.front-page-container .front-module{
+    background-color: white;
+    border: 1px solid #6fa3c4;
+    -webkit-box-shadow: 0 0 125px rgba(255,255,255,.35);
+    -moz-box-shadow: 0 0 125px rgba(255,255,255,.35);
+    box-shadow: 0 0 125px rgba(255,255,255,.35);
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.front-page-container .front-welcome .welcome-content{
+    width: 240px;
+    margin-top: 30px;
+    margin-right: 50px;
+}
+
+.front-page-container .front-welcome .welcome-content h1{
+    font-size: 16px;
+    font-weight: bolder;
+    margin-bottom: 10px;
+}
+
+.front-page-container .front-welcome .welcome-content p{
+    color: #999;
+    font-size: 14px;
+}
+
+.front-page-container .front-register-login{
+     margin-left: 10px;
+     width: 300px;
+}
+
+.front-page-container .login-module{
+    padding: 10px;
+}
+
+.front-page-container input{
+    margin-bottom: 5px;
+}
+
+.front-page-container .register-module .register-header{
+    padding: 10px;
+    border-bottom: 1px solid #e2e2e2;
+    -webkit-box-shadow: 0 1px 0 #fff;
+    box-shadow: 0 1px 0 #fff;
+}
+
+.front-page-container .register-module .register-body{
+    padding: 10px;
+}

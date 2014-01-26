@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "LoginRegister";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="front-page-container container">
+    <div class="front-module pull-left">
+        <div class="front-welcome">
+            <div class="welcome-content">
+                <h1>Welcome to Twitter's Copy.</h1>
+                <p>Start a conversation, explore your interests, and be in the know.</p>
+            </div>
+        </div>
+    </div>
+    <div class="front-register-login pull-left">
+        <div class="front-module">
+            <div class="login-module">
+                @using (Html.BeginForm("Login","Account", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.TextBox("Username", null, new { placeholder = "Username"})
+                    <div>
+                        @Html.Password("Password", null, new { placeholder = "Password" })
+                        <input type="submit"   value="Sign in" class="btn btn-primary" />
+                    </div>
+
+                    @Html.CheckBox("RememberMe")
+                    @Html.Label("RememberMe", "Remember me")
+                    <span> . </span>
+                    @Html.ActionLink("Forgot password?", "ForgottenPassword", "Account")
+                    
+                }
+
+            </div>
+        </div>
+        <div class="front-module">
+            <div class="register-module">
+                <div class="register-header">
+                    <h2>New to Twitter? <span>Sign up</span> </h2>
+                </div>
+                <div class="register-body">
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.TextBox("FullName")
+                        @Html.TextBox("Email")
+                        @Html.Password("Password")
+                        <input type="submit" value=" Sign up for Twitter" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
