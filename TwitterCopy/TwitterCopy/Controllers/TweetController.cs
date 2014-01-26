@@ -42,6 +42,25 @@
            return this.RedirectToAction("Index", "Home");
         }
 
+        public ActionResult Delete(int id)
+        {
+            var tweet = this.Data.Tweets.GetById(id);
+            var user = this.GetLogInUser();
+            if (tweet != null && user.UserName == tweet.Author.UserName)
+            {
+                this.Data.Tweets.Delete(tweet);
+                this.Data.SaveChanges();
+
+                this.TempData["InfoMessage"] = "Tweet was deleted succefully";
+            }
+            else
+            {
+                this.TempData["DangerMessage"] = "There was a problem deleting the tweet ";
+            }
+
+            return RedirectToAction("Index", "User", new { username = user.UserName });
+        }
+
         [ChildActionOnly]
         [HttpGet]
         [ActionName("ListTweets")]

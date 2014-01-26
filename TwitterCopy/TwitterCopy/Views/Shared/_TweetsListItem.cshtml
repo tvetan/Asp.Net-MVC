@@ -4,20 +4,67 @@
 
 <div class="list-item tweet">
     @*<img src="@Url.Action("UploadProfilePicture", "User", new { username = Model.Author.UserName })" class="profile-picture size48" />*@
-    @Html.GenerateProfilePicture(Model.Author.UserName, new { @class="profile-picture size48" })
+    @Html.GenerateProfilePicture(Model.Author.UserName, new { @class = "profile-picture size48" })
     <div class="list-item-inner">
-        <a href="@Url.Action("index", "user", new { username = Model.Author.UserName })" class="account-summary-small profile-link">
-            <strong class="fullname-tweet">
-                @Model.Author.UserName
-            </strong>
-            <small class="metadata">
-                @@@Model.Author.UserName
-            </small>
-        </a>
-        <b class="time">
-            @Model.FormatTimeSinceCreated()
-        </b>
+        <div class="list-item-body">
+            <a href="@Url.Action("index", "user", new { username = Model.Author.UserName })" class="account-summary-small profile-link">
+                <strong class="fullname-tweet">
+                    @Model.Author.FullName
+                </strong>
+                <small class="metadata">
+                    @@@Model.Author.UserName
+                </small>
+            </a>
+            <b class="time">
+                @Model.FormatTimeSinceCreated()
+            </b>
 
-        <p>@Html.DisplayWithLinks(Model.Status)</p>
+            <p>@Html.DisplayWithLinks(Model.Status)</p>
+        </div>
+        <div class="list-item-footer">
+            <a href="#">Expand</a>
+            <ul class="tweet-actions pull-right">
+                @if (User.Identity.Name == Model.Author.UserName)
+                {
+                    <li class="tweet-action">
+                        <a href="#" role="button" id="delete-tweet" data-target="#delete-tweet-modal" data-toggle="modal">
+                            <i class="glyphicon glyphicon-trash"></i>
+                            <span>Delete</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+            <div id="delete-tweet-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-header">
+                    <h3 class="modal-title">Are you sure you want to delete this Tweet?</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    @Html.GenerateProfilePicture(Model.Author.UserName, new { @class = "profile-picture size48" })
+                    <div class="list-item-body">
+                            <a href="@Url.Action("index", "user", new { username = Model.Author.UserName })" class="account-summary-small profile-link">
+                                <strong class="fullname-tweet">
+                                    @Model.Author.FullName
+                                </strong>
+                                <small class="metadata">
+                                    @@@Model.Author.UserName
+                                </small>
+                            </a>
+
+                            <b>.</b>
+                            <a href="#" id="date-created-tweet" data-toggle="tooltip" data-placement="top" title=""
+                               data-original-title="@Model.CreatedOn.ToString("hh:mm:ss - dd MMM yyyy")">
+                                @Model.CreatedOn.ToString("MMM dd")
+                            </a>
+                        <p>@Html.DisplayWithLinks(Model.Status)</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+
+                    @Html.ActionLink("Delete", "Delete", "Tweet", new { id = Model.Id}, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
     </div>
 </div>

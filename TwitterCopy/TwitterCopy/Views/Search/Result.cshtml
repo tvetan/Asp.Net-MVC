@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNet.Identity;
+@using TwitterCopy.Models;
+@model IEnumerable<ApplicationUser>
+
+<h1>@ViewBag.result</h1>
+
+@section RandomUsers {
+    <div class="module">
+        <div class="module-inner">
+            @Html.Partial("_RandomUsersPartial")
+        </div>
+    </div>
+}
+
+@section ListItems {
+    <div class="module row">
+        <div class="content-header">
+            <h3>
+                Results for
+                <b>
+                    @ViewBag.searchQuery
+                </b>
+            </h3>
+        </div>
+        @if (Model.Count() > 0)
+        {
+            @Html.Partial("_usersListPartial", Model)
+        }
+        else
+        {
+            <div class="search-empty-result">
+                <p>
+                    No results for <b>@ViewBag.searchQuery</b>
+                </p>
+            </div>
+        }
+
+    </div>
+}

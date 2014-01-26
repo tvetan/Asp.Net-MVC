@@ -11,6 +11,7 @@
     using TwitterCopy.Data;
     using TwitterCopy.Models;
 
+    [Authorize]
     public class UserController : BaseController
     {
         private const string FollowersHeader = "Followers";

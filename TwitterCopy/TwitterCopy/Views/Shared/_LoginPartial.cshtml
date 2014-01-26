@@ -8,16 +8,37 @@
             @Html.AntiForgeryToken()
 
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
+                <li class="dropdown">
+                    <a data-toggle="dropdown" href="#">
+                        <div> <i class="glyphicon glyphicon-cog"></i></div>
+                    </a>
+                    
+                    <ul class="dropdown-menu">
+                        <li class="profile-dropdown">
+                            <a href="/Contests">
+                                <div class="mini-profile">
+                                    <img src="@Url.Action("UploadProfilePicture", "User", new { username = User.Identity.Name })" class="profile-picture size32" alt="Profile Picture" />
+
+                                    <div class="profile-information">
+                                        <b class="fullname">@User.Identity.Name</b>
+                                        <small>Edit Profile</small>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#">Lists</a></li>
+                        <li class="divider"></li>
+                        <li><a href="@Url.Action("Settings", "Account")">Settings</a></li>
+                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Sign out</a></li>
+                    </ul>
                 </li>
-                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
                 <li>
                     <a href="#myModal" role="button" class="btn btn-tweet" data-toggle="modal">Tweet</a>
                 </li>
             </ul>
         }
-        
+
         @Html.Partial("_SearchForm")
     }
     else

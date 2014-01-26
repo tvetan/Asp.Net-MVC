@@ -9,6 +9,12 @@
     background-color: #C0DEED;
 }
 
+ul, li{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     margin: 0 auto;
@@ -242,8 +248,7 @@ input[type="email"] {
 }
 
 .profile-outer {
-    padding: 15px;
-    padding-bottom: 20px;
+    padding: 12px;
 }
 
 .mini-profile {
@@ -305,6 +310,35 @@ h2 {
     margin-left: 60px;
 }
 
+.list-item-footer .tweet-actions,
+.list-item-footer .tweet-actions .tweet-action{
+    display: inline;
+}
+
+.list-item-footer .tweet-actions .tweet-action{
+    margin-right: 5px;
+}
+
+.list-item-footer .tweet-actions a{
+    color: #999;
+}
+
+.list-item-footer .tweet-actions a:hover{
+    text-decoration: none;
+}
+
+.list-item-footer .tweet-actions a:hover span{
+    text-decoration: underline;
+}
+
+.list-item-footer .tweet-actions i{
+    font-size: 10px;
+}
+ 
+.list-item-footer .tweet-actions i:before{
+    margin-right: 0;
+}
+
 .tweet .time {
     float: right;
 }
@@ -312,6 +346,7 @@ h2 {
 .fullname-tweet {
     font-weight: bold;
     color: #333;
+    display: inline-block;
 }
 
 .profile-link:hover .fullname-tweet {
@@ -617,4 +652,26 @@ input[type=text], textarea {
     background-color: #fff;
     border-radius: 0 0 5px 5px;
     border-top: 1px solid #e1e8ed;
+}
+
+.profile-dropdown:hover .fullname{
+    color: white;
+}
+
+.profile-dropdown .profile-picture{
+    margin-top: 4px;
+}
+
+.navbar .dropdown i{
+    font-size: 23px;
+}
+
+#delete-tweet-modal .profile-picture{
+    margin-right: 11px;
+}
+
+.tooltip .tooltip-inner{
+    padding: 10px 12px;
+    font-size: 12px;
+    font-family: Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif
 }

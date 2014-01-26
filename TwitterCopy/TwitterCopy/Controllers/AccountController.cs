@@ -104,6 +104,7 @@
             return this.View(user);
         }
 
+        [Authorize]
         public ActionResult Profile()
         {
             var user = this.GetLogInUser();
@@ -244,7 +245,11 @@
 
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email };
+                var user = new ApplicationUser() {
+                    UserName = model.UserName, 
+                    Email = model.Email, 
+                    FullName = model.FullName 
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
