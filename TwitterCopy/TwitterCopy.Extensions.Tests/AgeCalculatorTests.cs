@@ -2,6 +2,7 @@
 {
     using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     using TwitterCopy.Common;
 
     [TestClass]
@@ -18,12 +19,46 @@
         }
 
         [TestMethod]
-        public void AgeShouldReturnProperAgeIfDayAndMonthAreTheSame()
+        public void AgeShouldReturnProperAgeIfBirthDayBefore10Years()
         {
-            DateTime? birthDate = DateTime.Now.AddYears(-10);
+            this.CreateBirthdayAndAssert(-10, 0, 0, 10);
+        }
+
+        [TestMethod]
+        public void AgeShouldReturnProperAgeIfBirthDayBefore10YearsAnd1Day()
+        {
+            this.CreateBirthdayAndAssert(-10, -1, 0, 10);
+        }
+
+        [TestMethod]
+        public void AgeShouldReturnProperAgeIfBirthDayBefore10YearsAndAfter1Day()
+        {
+            this.CreateBirthdayAndAssert(-10, 1, 0, 9);
+        }
+
+        [TestMethod]
+        public void AgeShouldReturnProperAgeIfBirthDayBefore10Years1MonthAndAfter1Day()
+        {
+            this.CreateBirthdayAndAssert(-10, -1, 0, 10);
+        }
+
+        [TestMethod]
+        public void AgeShouldReturnProperAgeIfBirthDayBefore10YearsAfter1Day1Month()
+        {
+            this.CreateBirthdayAndAssert(-10, -1, 1, 10);
+        }
+
+        [TestMethod]
+        public void AgeShouldReturnProperAgeIfBirthDayToday()
+        {
+            this.CreateBirthdayAndAssert(0, 0, 0, 0);
+        }
+
+        private void CreateBirthdayAndAssert(int year, int month, int day, byte expectedAge)
+        {
+            DateTime? birthDate = DateTime.Now.AddYears(year).AddMonths(month).AddDays(day);
 
             byte? age = AgeCalculator.Age(birthDate);
-            byte expectedAge = 10;
 
             Assert.AreEqual(expectedAge, age);
         }

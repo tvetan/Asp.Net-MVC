@@ -9,13 +9,13 @@
         protected TestClassBase()
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<FakeTwitterCopyDbContext, DatabaseConfiguration>());
-            this.TwitterCopyDAta = new TwitterCopyData(new FakeTwitterCopyDbContext());
+            this.TwitterCopyData = new TwitterCopyData(new FakeTwitterCopyDbContext());
             this.InitializeEmptyTwitterCopyData();
         }
 
         protected ITwitterCopyData EmptyTwitterCopyDAta { get; set; }
 
-        protected ITwitterCopyData TwitterCopyDAta { get; set; }
+        protected ITwitterCopyData TwitterCopyData { get; set; }
 
         protected void InitializeEmptyTwitterCopyData()
         {

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Migrations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TwitterCopy.Tests.Common.DataFakes
+﻿namespace TwitterCopy.Tests.Common.DataFakes
 {
+    using System.Data.Entity.Migrations;
+
     internal sealed class DatabaseConfiguration : DbMigrationsConfiguration<FakeTwitterCopyDbContext>
     {
         public DatabaseConfiguration()

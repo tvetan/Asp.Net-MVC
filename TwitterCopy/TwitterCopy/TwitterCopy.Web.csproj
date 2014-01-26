@@ -186,7 +186,6 @@
     <Compile Include="Models\Account\ForgottenPasswordViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
-    <Compile Include="Controllers\testController.cs" />
     <Compile Include="Controllers\TweetController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
@@ -326,11 +325,6 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_SearchForm.cshtml" />
-    <Content Include="Views\test\Create.cshtml" />
-    <Content Include="Views\test\Delete.cshtml" />
-    <Content Include="Views\test\Details.cshtml" />
-    <Content Include="Views\test\Edit.cshtml" />
-    <Content Include="Views\test\Index.cshtml" />
     <Content Include="Views\Shared\_CreateTweetForm.cshtml" />
     <Content Include="Views\Shared\_TweetsList.cshtml" />
     <Content Include="Views\Shared\_TweetsListItem.cshtml" />

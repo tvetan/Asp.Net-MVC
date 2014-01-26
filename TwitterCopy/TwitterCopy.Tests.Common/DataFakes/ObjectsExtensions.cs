@@ -1,8 +1,8 @@
-﻿using System;
-using System.Reflection;
-
-namespace TwitterCopy.Tests.Common.DataFakes
+﻿namespace TwitterCopy.Tests.Common.DataFakes
 {
+    using System;
+    using System.Reflection;
+
     public static class ObjectsExtensions
     {
         public static object ObjectClone(this object obj)
@@ -28,7 +28,5 @@ namespace TwitterCopy.Tests.Common.DataFakes
 
             return copy;
         }
-
-        
     }
 }

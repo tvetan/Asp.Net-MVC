@@ -98,30 +98,28 @@
             </div>
         </div>
     </div>
-
 }
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
-  <script>
-      $(function () {
-          function showProfilePicture(input) {
-              if (input.files && input.files[0]) {
-                  var reader = new FileReader();
+    <script>
+        $(function () {
+            function showProfilePicture(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
 
-                  reader.onload = function (event) {
-                      $("#profile-picture-edit").attr("src", event.target.result);
-                  }
+                    reader.onload = function (event) {
+                        $("#profile-picture-edit").attr("src", event.target.result);
+                    }
 
-                  reader.readAsDataURL(input.files[0]);
-              }
-          }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
 
-          $("#file").change(function () {
-              showProfilePicture(this);
-          })
-      });
-  </script> 
-
+            $("#file").change(function () {
+                showProfilePicture(this);
+            })
+        });
+    </script> 
 }
