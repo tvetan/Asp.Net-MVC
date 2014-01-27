@@ -71,15 +71,15 @@
     </div>
     <!-- Modal -->
     @RenderSection("scripts", required: false)
+
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <h3 class="modal-title" id="global-tweet-dialog-header">Compose new Tweet</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        </div>
+        <div class="modal-body">
+            @Html.Partial("_CreateTweetForm", new TwitterCopy.Models.CreateTweetViewModel())
+        </div>
+    </div>
 </body>
 </html>
-
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <h3 class="modal-title" id="global-tweet-dialog-header">Compose new Tweet</h3>
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    </div>
-    <div class="modal-body">
-        @Html.Partial("_CreateTweetForm", new TwitterCopy.Models.CreateTweetViewModel())
-    </div>
-</div>

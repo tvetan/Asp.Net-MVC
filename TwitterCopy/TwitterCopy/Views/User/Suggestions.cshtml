@@ -4,28 +4,33 @@
 }
 
 @section NavLinks{
-    <ul class="nav nav-pills nav-stacked">
-        <li class="active">
-            @Html.ActionLink("Who To Follow", null)
-        </li>
-    </ul>
+    <div class="module">
+        <ul class="nav nav-pills nav-stacked">
+            <li class="active">
+                @Html.ActionLink("Who To Follow", null)
+            </li>
+        </ul>
+    </div>
 }
 
 @section RandomUsers {
-    @Html.Partial("_RandomUsersPartial")
-}
-
-
-@section ListItems {
-    <div class="header">
-        <div class="content-header">
-            <h2>Who to follow</h2>
-            <p class="subheader">Twitter accounts suggested for you based on who you follow and more.</p>
-        </div>
-        <div>
-
+    <div class="module">
+        <div class="module-inner">
+            @Html.Partial("_RandomUsersPartial")
         </div>
     </div>
+}
 
-    @Html.Partial("_usersListPartial", Model)
+@section ListItems {
+    <div class="module">
+        <div class="module-inner">
+            <div class="content-header">
+                <h2>Who to follow</h2>
+                <p class="subheader">Twitter accounts suggested for you based on who you follow and more.</p>
+            </div>
+            <div class="content-body">
+                @Html.Partial("_UsersListPartial", Model)
+            </div>
+        </div>
+    </div>  
 }

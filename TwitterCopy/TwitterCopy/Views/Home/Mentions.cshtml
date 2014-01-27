@@ -3,30 +3,31 @@
 }
 
 @section  MiniProfile {
-    <ul class="nav">
-        <li>Interactions</li>
-        <li>Mentions</li>
-    </ul>
-}
-
-@section RandomUsers {
-    <div class="row">
-        <div class="row module-header">
-            <h3>Who to follow</h3>
-            <small>. </small>
-            @Ajax.ActionLink("Refresh", "RandomUsers", "user", new AjaxOptions() { })
-            <small>. </small>
-            @Html.ActionLink("View all", "All", "user")
-        </div>
-        <div class="random-followers">
-            @Html.Action("RandomUsers", "user")
+ 
+    <div class="module">
+        <div class="module-inner">
+            <ul class="nav nav-pills nav-stacked">
+                <li>
+                    <a href="#">Interactions</a>
+                </li>
+                <li class="active">
+                    <a href="#">Mentions</a>
+                </li>
+            </ul>
         </div>
     </div>
 }
-@*</div>*@
+
+@section RandomUsers {
+
+    <div class="module">
+        @Html.Partial("_RandomUsersPartial")
+    </div>
+     
+}
 
 @section ListItems {
-    <div class="module row">
+    <div class="module">
         <div class="content-header">
             <h2>Mentions</h2>
             <p class="subheader">Tweets that mention you, or are in reply to you, appear here. </p>
